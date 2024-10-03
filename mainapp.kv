@@ -1,0 +1,68 @@
+#:kivy 1.1.0
+
+Root:
+    BoxLayout:
+        id: main_layout
+        orientation: 'horizontal'
+        padding: [10,10,10,10]
+        spacing: 20
+        BoxLayout:
+            id: left_box
+            orientation: 'vertical'
+            size_hint_x: 0.6
+            BoxLayout:
+                id: change_buttons
+                size_hint_y: 0.1
+                orientation: 'horizontal'
+                Button:
+                    id: prev_button
+                    text: 'Hacia atras'
+                    on_release: app.prev_section()
+                Label:
+                    id: catalog_label
+                    text: 'Catálogo de partes'
+                Button:
+                    id: next_button
+                    text: 'Hacia adelante'
+                    on_release: app.next_section()
+            ScrollView:
+                id: scrollview
+                size_hint_y: 0.8
+                do_scroll_x: False
+                do_scroll_y: True
+            BoxLayout:
+                size_hint_y: 0.1
+                orientation: 'horizontal'
+                Label:
+                    text:'Hombre'
+                CheckBox:
+                    id: cb_hombre
+                    group: 'genero'
+                    on_active: app.change_genre()
+                Label:
+                    text:'Mujer'
+                CheckBox:
+                    id: cb_mujer
+                    group: 'genero'
+                    on_active: app.change_genre()
+
+
+        BoxLayout:
+            id: right_box
+            orientation: 'vertical'
+            size_hint_x: 0.4
+            Image:
+                id: build_image
+                size_hint_y: 0.9
+                source: 'images/no-image.jpg'
+                fit_mode: "contain"
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.1
+                Button:
+                    id: reset
+                    text: "Reset"
+                Button
+                    id: fin
+                    text: "Finalizar"
+                    on_release: app.quit()

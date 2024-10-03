@@ -1,0 +1,71 @@
+parte,codigo_catalogo,codigo,descripcion
+frente,mf,001,frente tipo media
+frente,mf,002,frente tipo ancha
+frente,mf,003,frente tipo estrecha
+frente,hf,001,frente tipo media
+frente,hf,002,frente tipo ancha
+frente,hf,003,frente tipo estrecha
+cejas,mc,001,ceja tipo sobresaliente
+cejas,mc,002,ceja tipo arqueada
+cejas,mc,003,ceja tipo triangular
+cejas,mc,004,ceja tipo recta
+cejas,mc,005,ceja tipo roto
+cejas,hc,001,ceja tipo sobresaliente
+cejas,hc,002,ceja tipo arqueada
+cejas,hc,003,ceja tipo triangular
+cejas,hc,004,ceja tipo recta
+cejas,hc,005,ceja tipo roto
+ojos,mo,001,ojos tipo estrechos
+ojos,mo,002,ojos tipo almendrados
+ojos,mo,003,ojos tipo asiaticos
+ojos,mo,004,ojos tipo prominentes
+ojos,mo,005,ojos tipo pequenos
+ojos,ho,001,ojos tipo estrechos
+ojos,ho,002,ojos tipo almendrados
+ojos,ho,003,ojos tipo asiaticos
+ojos,ho,004,ojos tipo prominentes
+ojos,ho,005,ojos tipo pequenos
+nariz,mn,001,nariz tipo recta
+nariz,mn,002,nariz tipo aguilena
+nariz,mn,003,nariz tipo chata
+nariz,mn,004,nariz tipo respingona
+nariz,mn,005,nariz tipo abultada
+nariz,hn,001,nariz tipo recta
+nariz,hn,002,nariz tipo aguilena
+nariz,hn,003,nariz tipo chata
+nariz,hn,004,nariz tipo respingona
+nariz,hn,005,nariz tipo abultada
+boca,mb,001,boca tipo pequena con labios delgados
+boca,mb,002,boca tipo pequena con labios gruesos
+boca,mb,003,boca tipo mediana con labios delgados
+boca,mb,004,boca tipo mediana con labios gruesos
+boca,mb,005,boca tipo grande con labios delgados
+boca,mb,006,boca tipo grande con labios gruesos
+boca,hb,001,boca tipo pequena con labios delgados
+boca,hb,002,boca tipo pequena con labios gruesos
+boca,hb,003,boca tipo mediana con labios delgados
+boca,hb,004,boca tipo mediana con labios gruesos
+boca,hb,005,boca tipo grande con labios delgados
+boca,hb,006,boca tipo grande con labios gruesos
+menton,mm,001,menton tipo cuadrado
+menton,mm,002,menton tipo redondeado
+menton,mm,003,menton tipo reducido
+menton,mm,004,menton tipo alargado
+menton,mm,005,menton tipo sobresaliente
+menton,hm,001,menton tipo cuadrado
+menton,hm,002,menton tipo redondeado
+menton,hm,003,menton tipo reducido
+menton,hm,004,menton tipo alargado
+menton,hm,005,menton tipo sobresaliente
+orejas,mor,001,orejas pequenas normales
+orejas,mor,002,orejas pequenas sobresalientes
+orejas,mor,003,orejas medianas normales
+orejas,mor,004,orejas medianas sobresalientes
+orejas,mor,005,orejas grandes normales
+orejas,mor,006,orejas grandes sobresalientes
+orejas,hor,001,orejas pequenas normales
+orejas,hor,002,orejas pequenas sobresalientes
+orejas,hor,003,orejas medianas normales
+orejas,hor,004,orejas medianas sobresalientes
+orejas,hor,005,orejas grandes normales
+orejas,hor,006,orejas grandes sobresalientes
