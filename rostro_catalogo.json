@@ -1,0 +1,101 @@
+{
+  "hombre": {
+    "cuadrado": {
+      "tipo_cara": "cuadrado",
+      "frente": [
+        {"codigo": "hf001", "descripcion": "frente tipo media", "imagen": "images/frente/hf001.jpg"},
+        {"codigo": "hf002", "descripcion": "frente tipo ancha", "imagen": "images/frente/hf002.jpg"},
+        {"codigo": "hf003", "descripcion": "frente tipo estrecha", "imagen": "images/frente/hf003.jpg"}
+      ],
+      "cejas": [
+        {"codigo": "hc001", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/hc001.jpg"},
+        {"codigo": "hc002", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/hc002.jpg"},
+        {"codigo": "hc003", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/hc003.jpg"},
+        {"codigo": "hc004", "descripcion": "ceja tipo recta", "imagen": "images/cejas/hc004.jpg"},
+        {"codigo": "hc005", "descripcion": "ceja tipo roto", "imagen": "images/cejas/hc005.jpg"}
+      ],
+      "ojos": [
+        {"codigo": "ho001", "descripcion": "ojos tipo estrechos", "imagen": "images/ojos/ho001.png"},
+        {"codigo": "ho002", "descripcion": "ojos tipo almendrados", "imagen": "images/ojos/ho002.png"},
+        {"codigo": "ho003", "descripcion": "ojos tipo asiaticos", "imagen": "images/ojos/ho003.png"},
+        {"codigo": "ho004", "descripcion": "ojos tipo prominentes", "imagen": "images/ojos/ho004.bmp"},
+        {"codigo": "ho005", "descripcion": "ojos tipo pequenos", "imagen": "images/ojos/ho005.png"}
+      ],
+      "nariz": [
+        {"codigo": "hn001", "descripcion": "nariz tipo recta", "imagen": "images/nariz/hn001.png"},
+        {"codigo": "hn002", "descripcion": "nariz tipo aguilena", "imagen": "images/nariz/hn002.png"},
+        {"codigo": "hn003", "descripcion": "nariz tipo chata", "imagen": "images/nariz/hn003.png"},
+        {"codigo": "hn004", "descripcion": "nariz tipo respingona", "imagen": "images/nariz/hn004.png"},
+        {"codigo": "hn005", "descripcion": "nariz tipo abultada", "imagen": "images/nariz/hn005.png"}
+      ],
+      "boca": [
+        {"codigo": "hb001", "descripcion": "boca tipo pequena con labios delgados", "imagen": "images/boca/hb001.png"},
+        {"codigo": "hb002", "descripcion": "boca tipo pequena con labios gruesos", "imagen": "images/boca/hb002.png"},
+        {"codigo": "hb003", "descripcion": "boca tipo mediana con labios delgados", "imagen": "images/boca/hb003.png"},
+        {"codigo": "hb004", "descripcion": "boca tipo mediana con labios gruesos", "imagen": "images/boca/hb004.png"},
+        {"codigo": "hb005", "descripcion": "boca tipo grande con labios delgados", "imagen": "images/boca/hb005.png"},
+        {"codigo": "hb006", "descripcion": "boca tipo grande con labios gruesos", "imagen": "images/boca/hb006.png"}
+      ]
+    }
+  },
+  "mujer": {
+    "cuadrado": {
+      "tipo_cara": "cuadrado",
+      "frente": [
+        {"codigo": "mf001", "descripcion": "frente tipo media", "imagen": "images/frente/mf001.png"},
+        {"codigo": "mf002", "descripcion": "frente tipo ancha", "imagen": "images/frente/mf002.png"},
+        {"codigo": "mf003", "descripcion": "frente tipo estrecha", "imagen": "images/frente/mf003.jpg"}
+      ],
+      "cejas": [
+        {"codigo": "mc001", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/mc001.jpg"},
+        {"codigo": "mc002", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/mc002.png"},
+        {"codigo": "mc003", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/mc003.jpg"},
+        {"codigo": "mc004", "descripcion": "ceja tipo recta", "imagen": "images/cejas/mc004.jpg"},
+        {"codigo": "mc005", "descripcion": "ceja tipo roto", "imagen": "images/cejas/mc005.jpg"}
+      ],
+      "ojos": [
+        {"codigo": "mo001", "descripcion": "ojos tipo estrechos", "imagen": "images/ojos/mo001.png"},
+        {"codigo": "mo002", "descripcion": "ojos tipo almendrados", "imagen": "images/ojos/mo002.png"},
+        {"codigo": "mo003", "descripcion": "ojos tipo asiaticos", "imagen": "images/ojos/mo003.png"},
+        {"codigo": "mo004", "descripcion": "ojos tipo prominentes", "imagen": "images/ojos/mo004.png"},
+        {"codigo": "mo005", "descripcion": "ojos tipo pequenos", "imagen": "images/ojos/mo005.png"}
+      ],
+      "nariz": [
+        {"codigo": "mn001", "descripcion": "nariz tipo recta", "imagen": "images/nariz/mn001.png"},
+        {"codigo": "mn002", "descripcion": "nariz tipo aguilena", "imagen": "images/nariz/mn002.png"},
+        {"codigo": "mn003", "descripcion": "nariz tipo chata", "imagen": "images/nariz/mn003.png"},
+        {"codigo": "mn004", "descripcion": "nariz tipo respingona", "imagen": "images/nariz/mn004.png"},
+        {"codigo": "mn005", "descripcion": "nariz tipo abultada", "imagen": "images/nariz/mn005.png"}
+      ],
+      "boca": [
+        {"codigo": "mb001", "descripcion": "boca tipo pequena con labios delgados", "imagen": "images/boca/mb001.png"},
+        {"codigo": "mb002", "descripcion": "boca tipo pequena con labios gruesos", "imagen": "images/boca/mb002.png"},
+        {"codigo": "mb003", "descripcion": "boca tipo mediana con labios delgados", "imagen": "images/boca/mb003.png"},
+        {"codigo": "mb004", "descripcion": "boca tipo mediana con labios gruesos", "imagen": "images/boca/mb004.png"},
+        {"codigo": "mb005", "descripcion": "boca tipo grande con labios delgados", "imagen": "images/boca/mb005.png"},
+        {"codigo": "mb006", "descripcion": "boca tipo grande con labios gruesos", "imagen": "images/boca/mb006.png"}
+      ]
+    }
+  }
+}
+{
+  "hombre": {
+    "ovalado": {
+      "tipo_cara": "ovalado",
+      "frente": [
+        {"codigo": "hf101", "descripcion": "frente tipo media", "imagen": "images/frente/hf101.jpg"},
+        {"codigo": "hf102", "descripcion": "frente tipo ancha", "imagen": "images/frente/hf102.jpg"},
+        {"codigo": "hf103", "descripcion": "frente tipo estrecha", "imagen": "images/frente/hf103.jpg"}
+      ],
+      "cejas": [
+        {"codigo": "hc101", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/hc101.jpg"},
+        {"codigo": "hc102", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/hc102.jpg"},
+        {"codigo": "hc103", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/hc103.jpg"},
+        {"codigo": "hc104", "descripcion": "ceja tipo recta", "imagen": "images/cejas/hc104.jpg"},
+        {"codigo": "hc105", "descripcion": "ceja tipo roto", "imagen": "images/cejas/hc105.jpg"}
+      ],
+      // ... (rest of the attributes for 'hombre' with 'ovalado' face shape)
+    }
+  },
+  // ... (rest of the catalog for 'mujer' with 'ovalado' face shape)
+}
