@@ -35,6 +35,7 @@ def load_data():
                         "codigo": item["codigo"],
                         "descripcion": item["descripcion"],
                         "imagen": item["imagen"],
+                        "indices": item.get("indices", {}),
                     }
                 )
 
@@ -87,3 +88,102 @@ def redimenxiona_misma_forma(image_list):
         padded_images.append(padded_img)
 
     return padded_images
+
+
+def seleccionar_boca_ovalada(img, centro=None, tamaño_ovalo=None):
+    # Cargar imagen
+    if img is None:
+        raise ValueError("No se pudo cargar la imagen.")
+
+    h, w = img.shape[:2]
+
+    # Definir centro y tamaño del óvalo si no se especifican
+    if centro is None:
+        centro = (w // 2, h // 2)
+    if tamaño_ovalo is None:
+        tamaño_ovalo = (int(w * 0.45), int(h * 0.45))  # ancho, alto
+
+    # Crear máscara con óvalo blanco sobre fondo negro
+    mask = np.zeros((h, w), dtype=np.uint8)
+    cv.ellipse(mask, centro, tamaño_ovalo, 0, 0, 360, 255, -1)
+
+    # Aplicar máscara: fuera del óvalo se pone en blanco
+    img_blanco = np.ones_like(img) * 255
+    if img.ndim == 3:
+        resultado = np.where(mask[..., None] == 255, img, img_blanco)
+    else:
+        resultado = np.where(mask == 255, img, img_blanco)
+
+    return resultado
+
+
+def bordes_boca_frecuencial(
+    img,
+    r=10,
+    umbral=10,
+):
+    """
+    Obtiene los bordes de la boca aplicando un filtro de paso alto en el dominio frecuencial.
+    Algoritmos matemáticos: FFT 2D, filtro de paso alto, IFFT 2D.
+    Args:
+        img (np.ndarray): Imagen de la boca.
+        r (int): Radio del área central (bajas frecuencias) a eliminar.
+        umbral (int): Umbral para la binarización de la imagen.
+    Returns:
+        np.ndarray: Imagen con los bordes resaltados.
+    """
+    if img is None:
+        raise ValueError("No se pudo cargar la imagen.")
+
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    img = normalizar_grises(img)
+    # Transformada de Fourier 2D
+    f = np.fft.fft2(img)
+    fshift = np.fft.fftshift(f)
+
+    # Crear filtro de paso alto (máscara circular en el centro)
+    rows, cols = img.shape
+    crow, ccol = rows // 2, cols // 2
+    mask = np.ones((rows, cols), np.uint8)
+    # r = 10  # radio del área central (bajas frecuencias)
+    mask[crow - r : crow + r, ccol - r : ccol + r] = 0
+
+    # Aplicar filtro en el dominio frecuencial
+    fshift_filtrado = fshift * mask
+
+    # Transformada inversa para regresar al dominio espacial
+    f_ishift = np.fft.ifftshift(fshift_filtrado)
+    img_bordes = np.fft.ifft2(f_ishift)
+    img_bordes = np.abs(img_bordes)
+    _, img_bordes_bin = cv.threshold(
+        img_bordes,
+        umbral,
+        255,
+        cv.THRESH_BINARY_INV,
+    )
+    return img_bordes_bin
+
+
+def normalizar_grises(img):
+    """
+    Normaliza una imagen en escala de grises para que sus valores estén entre 0 y 255.
+    Args:
+        img (np.ndarray): Imagen en escala de grises.
+    Returns:
+        np.ndarray: Imagen normalizada.
+    """
+    if img is None:
+        raise ValueError("Imagen no válida")
+    img = img.astype(np.float32)
+    min_val = np.min(img)
+    max_val = np.max(img)
+    if max_val - min_val == 0:
+        return np.zeros_like(img, dtype=np.uint8)
+    img_norm = (img - min_val) / (max_val - min_val) * 255
+    return img_norm.astype(np.uint8)
+
+
+def show_image(image, title="Image"):
+    cv.imshow(title, image)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
