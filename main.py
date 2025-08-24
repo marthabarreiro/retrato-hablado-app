@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
+import pandas as pd
 
 import tools
 from custom_widgets import ImageTextButton
@@ -30,9 +31,11 @@ class MainApp(App):
         self.root.ids.prev_button.disabled = True
 
     def load_data(self, genre: str = "hombre", part: str = "ojos"):
+        # Cargar datos desde rostro_catalogo.json usando pandas
+        df = pd.read_json("rostro_catalogo.json")
+        data = df.query("genero==@genre and parte_x==@part")
         self.root.ids.scrollview.clear_widgets()
         self.gruoped_features.clear_widgets()
-        data = self.root.data.query("genero==@genre and parte_x==@part")
         self.root.ids.catalog_label.text = f"Tipo de {part}"
         for i in data.index:
             itb = ImageTextButton(

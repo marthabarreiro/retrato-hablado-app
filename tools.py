@@ -3,6 +3,7 @@ import os
 from typing import Tuple
 import numpy as np
 import cv2 as cv
+import json
 
 
 def get_image_path(image_name):
@@ -19,19 +20,28 @@ def get_image_path(image_name):
 
 
 def load_data():
-    catalog_df = pd.read_csv("catalog.csv")
-    faceparts_df = pd.read_csv("face_parts.csv")
-    faceparts_df["codigo"] = faceparts_df["codigo"].astype(str).str.zfill(3)
+    with open("rostro_catalogo.json", encoding="utf-8") as f:
+        data = json.load(f)
 
-    merged_df = pd.merge(
-        catalog_df, faceparts_df, left_on="codigo", right_on="codigo_catalogo"
-    )
+    # Extraer todas las partes de hombre y mujer en una sola lista
+    partes = []
+    for genero in ["hombre", "mujer"]:
+        for parte, items in data[genero]["partes"].items():
+            for item in items:
+                partes.append(
+                    {
+                        "genero": genero,
+                        "parte": parte,
+                        "codigo": item["codigo"],
+                        "descripcion": item["descripcion"],
+                        "imagen": item["imagen"],
+                    }
+                )
 
-    merged_df["image_name"] = merged_df["codigo_x"] + merged_df["codigo_y"]
+    # Crear el DataFrame
+    df = pd.DataFrame(partes)
 
-    merged_df["image_path"] = merged_df["image_name"].apply(get_image_path)
-
-    return merged_df
+    return df
 
 
 def load_catalog():

@@ -1,7 +1,31 @@
 {
   "hombre": {
-    "cuadrado": {
-      "tipo_cara": "cuadrado",
+    "partes": {
+      "tipos_rostro": [
+      {"codigo": "tp001", "descripcion": "tipo de rostro rectangular", "imagen": "images/tipos_rostro/tp001.png",
+    "indices":{
+      "boca": {
+        "izquierdo": [460, 150], // Nombre del índice
+        "centro": [500, 150],
+        "derecho": [480, 130],
+      },
+      "nariz": {
+        "izquierdo": [460, 150], // Nombre del índice
+        "centro": [500, 150],
+        "derecho": [480, 130],
+      }
+    }},
+      {"codigo": "tp002", "descripcion": "tipo de rostro redondo", "imagen": "images/tipos_rostro/tp002.png"},
+      {"codigo": "tp003", "descripcion": "tipo de rostro cuadrado", "imagen": "images/tipos_rostro/tp003.png"},
+      {"codigo": "tp004", "descripcion": "tipo de rostro ovalado", "imagen": "images/tipos_rostro/tp004.png"},
+      {"codigo": "tp005", "descripcion": "tipo de rostro triangular", "imagen": "images/tipos_rostro/tp005.png"}
+    ],
+      "pelo": [
+        {"codigo": "hp001", "descripcion": "pelo tipo corto lacio", "imagen": "images/frente/hp001.jpg"},
+        {"codigo": "hp002", "descripcion": "pelo tipo corto rizado", "imagen": "images/frente/hp002.jpg"},
+        {"codigo": "hp003", "descripcion": "pelo tipo mediano lacio", "imagen": "images/frente/hp003.jpg"},
+        {"codigo": "hp004", "descripcion": "pelo tipo mediano rizado", "imagen": "images/frente/hp004.jpg"}
+      ],
       "frente": [
         {"codigo": "hf001", "descripcion": "frente tipo media", "imagen": "images/frente/hf001.jpg"},
         {"codigo": "hf002", "descripcion": "frente tipo ancha", "imagen": "images/frente/hf002.jpg"},
@@ -35,19 +59,46 @@
         {"codigo": "hb004", "descripcion": "boca tipo mediana con labios gruesos", "imagen": "images/boca/hb004.png"},
         {"codigo": "hb005", "descripcion": "boca tipo grande con labios delgados", "imagen": "images/boca/hb005.png"},
         {"codigo": "hb006", "descripcion": "boca tipo grande con labios gruesos", "imagen": "images/boca/hb006.png"}
+      ],
+      "menton": [
+        {"codigo": "hm001", "descripcion": "menton tipo cuadrado", "imagen": "images/menton/hm001.jpg"},
+        {"codigo": "hm002", "descripcion": "menton tipo redondo", "imagen": "images/menton/hm002.jpg"},
+        {"codigo": "hm003", "descripcion": "menton tipo reducido", "imagen": "images/menton/hm003.jpg"},
+        {"codigo": "hm004", "descripcion": "menton tipo alargado", "imagen": "images/menton/hm004.jpg"},
+        {"codigo": "hm005", "descripcion": "menton tipo sobresaliente", "imagen": "images/menton/hm005.jpg"}
+      ],
+      "orejas": [
+        {"codigo": "hor001", "descripcion": "orejas tipo pequeñas normales", "imagen": "images/orejas/hor001.jpg"},
+        {"codigo": "hor002", "descripcion": "orejas tipo pequenas sobresalientes", "imagen": "images/orejas/hor002.jpgg"},
+        {"codigo": "hor003", "descripcion": "orejas tipo medianas normales", "imagen": "images/orejas/hor003.jpg"},
+        {"codigo": "hor004", "descripcion": "orejas tipo medianas sobresalientes", "imagen": "images/orejas/hor004.jpg"},
+        {"codigo": "hor005", "descripcion": "orejas tipo grandes normales", "imagen": "images/orejas/hor005.jpg"},
+        {"codigo": "hor006", "descripcion": "orejas tipo grandes sobresalientes", "imagen": "images/orejas/hor006.jpg"}
       ]
     }
   },
   "mujer": {
-    "cuadrado": {
-      "tipo_cara": "cuadrado",
+    "partes": {
+      "tipos_rostro": [
+      {"codigo": "tp001", "descripcion": "tipo de rostro rectangular", "imagen": "images/tipos_rostro/tp001.png"},
+      {"codigo": "tp002", "descripcion": "tipo de rostro redondo", "imagen": "images/tipos_rostro/tp002.png"},
+      {"codigo": "tp003", "descripcion": "tipo de rostro cuadrado", "imagen": "images/tipos_rostro/tp003.png"},
+      {"codigo": "tp004", "descripcion": "tipo de rostro ovalado", "imagen": "images/tipos_rostro/tp004.png"},
+      {"codigo": "tp005", "descripcion": "tipo de rostro triangular", "imagen": "images/tipos_rostro/tp005.png"}
+    ],
+      "pelo": [
+        {"codigo": "mp001", "descripcion": "pelo tipo corto lacio", "imagen": "images/frente/mp001.png"},
+        {"codigo": "mp002", "descripcion": "pelo tipo corto rizado", "imagen": "images/frente/mp002.png"},
+        {"codigo": "mp003", "descripcion": "pelo tipo mediano lacio", "imagen": "images/frente/mp003.jpg"},
+        {"codigo": "mp004", "descripcion": "pelo tipo mediano rizado", "imagen": "images/frente/mp004.jpg"}
+      ],
       "frente": [
         {"codigo": "mf001", "descripcion": "frente tipo media", "imagen": "images/frente/mf001.png"},
         {"codigo": "mf002", "descripcion": "frente tipo ancha", "imagen": "images/frente/mf002.png"},
         {"codigo": "mf003", "descripcion": "frente tipo estrecha", "imagen": "images/frente/mf003.jpg"}
       ],
       "cejas": [
-        {"codigo": "mc001", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/mc001.jpg"},
+        {"codigo": "mc001", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/mc001.png"},
         {"codigo": "mc002", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/mc002.png"},
         {"codigo": "mc003", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/mc003.jpg"},
         {"codigo": "mc004", "descripcion": "ceja tipo recta", "imagen": "images/cejas/mc004.jpg"},
@@ -74,28 +125,22 @@
         {"codigo": "mb004", "descripcion": "boca tipo mediana con labios gruesos", "imagen": "images/boca/mb004.png"},
         {"codigo": "mb005", "descripcion": "boca tipo grande con labios delgados", "imagen": "images/boca/mb005.png"},
         {"codigo": "mb006", "descripcion": "boca tipo grande con labios gruesos", "imagen": "images/boca/mb006.png"}
+      ],
+      "menton": [
+        {"codigo": "mm001", "descripcion": "menton tipo cuadrado", "imagen": "images/menton/mm001.jpg"},
+        {"codigo": "mm002", "descripcion": "menton tipo redondo", "imagen": "images/menton/mm002.jpg"},
+        {"codigo": "mm003", "descripcion": "menton tipo reducido", "imagen": "images/menton/mm003.png"},
+        {"codigo": "mm004", "descripcion": "menton tipo alargado", "imagen": "images/menton/mm004.jpg"},
+        {"codigo": "mm005", "descripcion": "menton tipo sobresaliente", "imagen": "images/menton/mm005.jpg"}
+      ],
+      "orejas": [
+        {"codigo": "mor001", "descripcion": "orejas tipo pequeñas normales", "imagen": "images/orejas/mor001.png"},
+        {"codigo": "mor002", "descripcion": "orejas tipo pequeñas sobresalientes", "imagen": "images/orejas/mor002.jpg"},
+        {"codigo": "mor003", "descripcion": "orejas tipo medianas normales", "imagen": "images/orejas/mor003.png"},
+        {"codigo": "mor004", "descripcion": "orejas tipo medianas sobresalientes", "imagen": "images/orejas/mor004.jpg"},
+        {"codigo": "mor005", "descripcion": "orejas tipo grandes normales", "imagen": "images/orejas/mor005.jpg"},
+        {"codigo": "mor006", "descripcion": "orejas tipo grandes sobresalientes", "imagen": "images/orejas/mor006.jpg"}
       ]
     }
   }
-}
-{
-  "hombre": {
-    "ovalado": {
-      "tipo_cara": "ovalado",
-      "frente": [
-        {"codigo": "hf101", "descripcion": "frente tipo media", "imagen": "images/frente/hf101.jpg"},
-        {"codigo": "hf102", "descripcion": "frente tipo ancha", "imagen": "images/frente/hf102.jpg"},
-        {"codigo": "hf103", "descripcion": "frente tipo estrecha", "imagen": "images/frente/hf103.jpg"}
-      ],
-      "cejas": [
-        {"codigo": "hc101", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/hc101.jpg"},
-        {"codigo": "hc102", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/hc102.jpg"},
-        {"codigo": "hc103", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/hc103.jpg"},
-        {"codigo": "hc104", "descripcion": "ceja tipo recta", "imagen": "images/cejas/hc104.jpg"},
-        {"codigo": "hc105", "descripcion": "ceja tipo roto", "imagen": "images/cejas/hc105.jpg"}
-      ],
-      // ... (rest of the attributes for 'hombre' with 'ovalado' face shape)
-    }
-  },
-  // ... (rest of the catalog for 'mujer' with 'ovalado' face shape)
 }
