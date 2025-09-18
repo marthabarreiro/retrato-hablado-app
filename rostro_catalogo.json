@@ -1,27 +1,41 @@
 {
-  "hombre": {
-    "partes": {
-      "tipos_rostro": [
+  "tipos_rostro": [
       {"codigo": "tp001", "descripcion": "tipo de rostro rectangular", "imagen": "images/tipos_rostro/tp001.png",
-    "indices":{
-      "boca": {
-        "izquierdo": [460, 150], // Nombre del índice
-        "centro": [500, 150],
-        "derecho": [480, 130],
+        "indices":{
+          "pelo":{
+            "sai":{"x":22,"y":206},
+            "tr":{"x":222,"y":47},
+            "sad":{"x":411,"y":204}
+          },
+          "frente":{
+            "fti":{"x":69,"y":171},
+            "tr":{"x":222,"y":47},
+            "ftd":{"x":266,"y":47}
+          }
+        }
       },
-      "nariz": {
-        "izquierdo": [460, 150], // Nombre del índice
-        "centro": [500, 150],
-        "derecho": [480, 130],
-      }
-    }},
       {"codigo": "tp002", "descripcion": "tipo de rostro redondo", "imagen": "images/tipos_rostro/tp002.png"},
       {"codigo": "tp003", "descripcion": "tipo de rostro cuadrado", "imagen": "images/tipos_rostro/tp003.png"},
       {"codigo": "tp004", "descripcion": "tipo de rostro ovalado", "imagen": "images/tipos_rostro/tp004.png"},
       {"codigo": "tp005", "descripcion": "tipo de rostro triangular", "imagen": "images/tipos_rostro/tp005.png"}
     ],
+  "partes": {
+    "hombre": {
       "pelo": [
-        {"codigo": "hp001", "descripcion": "pelo tipo corto lacio", "imagen": "images/frente/hp001.jpg"},
+        {"codigo": "hp001", "descripcion": "pelo tipo corto lacio", "imagen": "images/frente/hp001.jpg",
+          "indices":{
+          "pelo":{
+            "sai":{"x":22,"y":206},
+            "tr":{"x":222,"y":47},
+            "sad":{"x":411,"y":204}
+          },
+          "frente":{
+            "fti":{"x":69,"y":171},
+            "tr":{"x":222,"y":47},
+            "ftd":{"x":266,"y":47}
+          }
+        }
+        },
         {"codigo": "hp002", "descripcion": "pelo tipo corto rizado", "imagen": "images/frente/hp002.jpg"},
         {"codigo": "hp003", "descripcion": "pelo tipo mediano lacio", "imagen": "images/frente/hp003.jpg"},
         {"codigo": "hp004", "descripcion": "pelo tipo mediano rizado", "imagen": "images/frente/hp004.jpg"}
@@ -75,17 +89,8 @@
         {"codigo": "hor005", "descripcion": "orejas tipo grandes normales", "imagen": "images/orejas/hor005.jpg"},
         {"codigo": "hor006", "descripcion": "orejas tipo grandes sobresalientes", "imagen": "images/orejas/hor006.jpg"}
       ]
-    }
-  },
-  "mujer": {
-    "partes": {
-      "tipos_rostro": [
-      {"codigo": "tp001", "descripcion": "tipo de rostro rectangular", "imagen": "images/tipos_rostro/tp001.png"},
-      {"codigo": "tp002", "descripcion": "tipo de rostro redondo", "imagen": "images/tipos_rostro/tp002.png"},
-      {"codigo": "tp003", "descripcion": "tipo de rostro cuadrado", "imagen": "images/tipos_rostro/tp003.png"},
-      {"codigo": "tp004", "descripcion": "tipo de rostro ovalado", "imagen": "images/tipos_rostro/tp004.png"},
-      {"codigo": "tp005", "descripcion": "tipo de rostro triangular", "imagen": "images/tipos_rostro/tp005.png"}
-    ],
+    },
+    "mujer": {
       "pelo": [
         {"codigo": "mp001", "descripcion": "pelo tipo corto lacio", "imagen": "images/frente/mp001.png"},
         {"codigo": "mp002", "descripcion": "pelo tipo corto rizado", "imagen": "images/frente/mp002.png"},
