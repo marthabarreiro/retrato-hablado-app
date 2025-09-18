@@ -27,9 +27,9 @@
           "acd":{"x":266,"y":366}
           },
         "boca":{
-          "chi":{"x":163,"y":418},
-          "sto":{"x":221,"y":418},
-          "chd":{"x":276,"y":418}
+          "chi":{"x":155,"y":419},
+          "sto":{"x":222,"y":417},
+          "chd":{"x":284,"y":417}
           },
         "menton":{
           "gni":{"x":74,"y":460},
@@ -37,27 +37,27 @@
           "gnd":{"x":372,"y":456}
           },
         "orejas":{
-          "sad":{"x":411,"y":215},
-          "zyd":{"x":394,"y":277},
-          "sbad":{"x":392,"y":330}
+          "sad":{"x":411,"y":206},
+          "zyd":{"x":395,"y":277},
+          "sbad":{"x":391,"y":341}
           }
         }
       },
       {"codigo": "tp002", "descripcion": "tipo de rostro redondo", "imagen": "images/plantillas/tp002_pc.fw.png","indices":{
         "pelo":{
-          "sai":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "sad":{"x":411,"y":204}
+          "sai":{"x":21,"y":207},
+          "tr":{"x":223,"y":45},
+          "sad":{"x":419,"y":204}
           },
         "frente":{
-          "fti":{"x":69,"y":161},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":366,"y":162}
+          "fti":{"x":70,"y":161},
+          "tr":{"x":223,"y":47},
+          "ftd":{"x":366,"y":161}
           },
         "cejas":{
           "fzi":{"x":77,"y":219},
-          "se":{"x":221,"y":222},
-          "fzd":{"x":363,"y":217}
+          "se":{"x":221,"y":221},
+          "fzd":{"x":363,"y":216}
           },
         "ojos":{
           "exi":{"x":107,"y":236},
@@ -65,293 +65,943 @@
           "exd":{"x":344,"y":235}
           },
         "nariz":{
-          "aci":{"x":176,"y":367},
-          "rhi":{"x":221,"y":259},
-          "acd":{"x":266,"y":366}
+          "aci":{"x":176,"y":366},
+          "rhi":{"x":222,"y":261},
+          "acd":{"x":266,"y":365}
           },
         "boca":{
-          "chi":{"x":163,"y":418},
-          "sto":{"x":221,"y":418},
-          "chd":{"x":276,"y":418}
+          "chi":{"x":154,"y":418},
+          "sto":{"x":222,"y":418},
+          "chd":{"x":284,"y":419}
           },
         "menton":{
-          "gni":{"x":74,"y":460},
-          "me":{"x":222,"y":551},
-          "gnd":{"x":372,"y":456}
+          "gni":{"x":112,"y":458},
+          "me":{"x":222,"y":503},
+          "gnd":{"x":322,"y":456}
           },
         "orejas":{
-          "sad":{"x":411,"y":215},
-          "zyd":{"x":394,"y":277},
-          "sbad":{"x":392,"y":330}
+          "sad":{"x":419,"y":206},
+          "zyd":{"x":406,"y":276},
+          "sbad":{"x":394,"y":341}
           }
         }
       },
       {"codigo": "tp003", "descripcion": "tipo de rostro cuadrado", "imagen": "images/plantillas/tp003_pc.fw.png", "indices":{
         "pelo":{
-          "sai":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "sad":{"x":411,"y":204}
+          "sai":{"x":12,"y":206},
+          "tr":{"x":222,"y":52},
+          "sad":{"x":423,"y":205}
           },
         "frente":{
           "fti":{"x":69,"y":161},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":366,"y":162}
+          "tr":{"x":223,"y":52},
+          "ftd":{"x":366,"y":161}
           },
         "cejas":{
           "fzi":{"x":77,"y":219},
-          "se":{"x":221,"y":222},
-          "fzd":{"x":363,"y":217}
+          "se":{"x":222,"y":221},
+          "fzd":{"x":364,"y":216}
           },
         "ojos":{
-          "exi":{"x":107,"y":236},
-          "se":{"x":221,"y":220},
-          "exd":{"x":344,"y":235}
+          "exi":{"x":106,"y":237},
+          "se":{"x":221,"y":222},
+          "exd":{"x":345,"y":236}
           },
         "nariz":{
-          "aci":{"x":176,"y":367},
+          "aci":{"x":175,"y":365},
           "rhi":{"x":221,"y":259},
           "acd":{"x":266,"y":366}
           },
         "boca":{
-          "chi":{"x":163,"y":418},
-          "sto":{"x":221,"y":418},
-          "chd":{"x":276,"y":418}
+          "chi":{"x":155,"y":417},
+          "sto":{"x":222,"y":418},
+          "chd":{"x":284,"y":418}
           },
         "menton":{
-          "gni":{"x":74,"y":460},
-          "me":{"x":222,"y":551},
-          "gnd":{"x":372,"y":456}
+          "gni":{"x":82,"y":460},
+          "me":{"x":222,"y":527},
+          "gnd":{"x":356,"y":458}
           },
         "orejas":{
-          "sad":{"x":411,"y":215},
-          "zyd":{"x":394,"y":277},
-          "sbad":{"x":392,"y":330}
+          "sad":{"x":423,"y":204},
+          "zyd":{"x":407,"y":276},
+          "sbad":{"x":395,"y":341}
           }
         }
       },
       {"codigo": "tp004", "descripcion": "tipo de rostro ovalado", "imagen": "images/plantillas/tp004_pc.fw.png", "indices": {
         "pelo":{
-          "sai":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "sad":{"x":411,"y":204}
+          "sai":{"x":18,"y":206},
+          "tr":{"x":223,"y":45},
+          "sad":{"x":419,"y":206}
           },
         "frente":{
-          "fti":{"x":69,"y":161},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":366,"y":162}
+          "fti":{"x":68,"y":161},
+          "tr":{"x":221,"y":45},
+          "ftd":{"x":365,"y":163}
           },
         "cejas":{
-          "fzi":{"x":77,"y":219},
-          "se":{"x":221,"y":222},
+          "fzi":{"x":76,"y":219},
+          "se":{"x":221,"y":220},
           "fzd":{"x":363,"y":217}
           },
         "ojos":{
-          "exi":{"x":107,"y":236},
-          "se":{"x":221,"y":220},
-          "exd":{"x":344,"y":235}
+          "exi":{"x":106,"y":237},
+          "se":{"x":222,"y":222},
+          "exd":{"x":342,"y":235}
           },
         "nariz":{
-          "aci":{"x":176,"y":367},
-          "rhi":{"x":221,"y":259},
-          "acd":{"x":266,"y":366}
+          "aci":{"x":174,"y":365},
+          "rhi":{"x":221,"y":258},
+          "acd":{"x":266,"y":365}
           },
         "boca":{
-          "chi":{"x":163,"y":418},
-          "sto":{"x":221,"y":418},
-          "chd":{"x":276,"y":418}
+          "chi":{"x":155,"y":418},
+          "sto":{"x":222,"y":419},
+          "chd":{"x":284,"y":418}
           },
         "menton":{
-          "gni":{"x":74,"y":460},
-          "me":{"x":222,"y":551},
-          "gnd":{"x":372,"y":456}
+          "gni":{"x":89,"y":459},
+          "me":{"x":221,"y":546},
+          "gnd":{"x":344,"y":459}
           },
         "orejas":{
-          "sad":{"x":411,"y":215},
-          "zyd":{"x":394,"y":277},
-          "sbad":{"x":392,"y":330}
+          "sad":{"x":418,"y":205},
+          "zyd":{"x":404,"y":276},
+          "sbad":{"x":392,"y":341}
           }
         }
       },
       {"codigo": "tp005", "descripcion": "tipo de rostro triangular", "imagen": "images/plantillas/tp005_pc.fw.png", "indices":{
         "pelo":{
-          "sai":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "sad":{"x":411,"y":204}
+          "sai":{"x":23,"y":206},
+          "tr":{"x":222,"y":46},
+          "sad":{"x":421,"y":204}
           },
         "frente":{
           "fti":{"x":69,"y":161},
-          "tr":{"x":222,"y":47},
+          "tr":{"x":222,"y":48},
           "ftd":{"x":366,"y":162}
           },
         "cejas":{
-          "fzi":{"x":77,"y":219},
-          "se":{"x":221,"y":222},
-          "fzd":{"x":363,"y":217}
+          "fzi":{"x":76,"y":219},
+          "se":{"x":222,"y":222},
+          "fzd":{"x":363,"y":216}
           },
         "ojos":{
           "exi":{"x":107,"y":236},
-          "se":{"x":221,"y":220},
+          "se":{"x":222,"y":221},
           "exd":{"x":344,"y":235}
           },
         "nariz":{
-          "aci":{"x":176,"y":367},
-          "rhi":{"x":221,"y":259},
-          "acd":{"x":266,"y":366}
+          "aci":{"x":176,"y":366},
+          "rhi":{"x":220,"y":261},
+          "acd":{"x":266,"y":365}
           },
         "boca":{
-          "chi":{"x":163,"y":418},
-          "sto":{"x":221,"y":418},
-          "chd":{"x":276,"y":418}
+          "chi":{"x":156,"y":417},
+          "sto":{"x":222,"y":418},
+          "chd":{"x":284,"y":419}
           },
         "menton":{
-          "gni":{"x":74,"y":460},
-          "me":{"x":222,"y":551},
-          "gnd":{"x":372,"y":456}
+          "gni":{"x":90,"y":459},
+          "me":{"x":220,"y":562},
+          "gnd":{"x":352,"y":458}
           },
         "orejas":{
-          "sad":{"x":411,"y":215},
-          "zyd":{"x":394,"y":277},
-          "sbad":{"x":392,"y":330}
+          "sad":{"x":420,"y":205},
+          "zyd":{"x":404,"y":275},
+          "sbad":{"x":396,"y":340}
           }
         }
       }
 
     ],
+
+ 
+
   "partes": {
-    "hombre": {
-      "pelo":{
-        {"codigo": "hp001", "descripcion": "pelo tipo corto lacio", "imagen": "images/pelo/hp001.jpg","indices":{
-          "sai":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "sad":{"x":411,"y":204}
-          }
-        },
-        {"codigo": "hp002", "descripcion": "pelo tipo corto rizado", "imagen": "images/pelo/hp002.jpg","indices":{
-          "sai":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "sad":{"x":411,"y":204}
-          }
-        }
-      },
-      "frente":{
-        "codigo": "hf001", "descripcion": "frente tipo amplia", "imagen": "images/frente/hf001.jpg","indices":{
-          "fti":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":411,"y":204}
-          }
-        },
-        "codigo": "hf002", "descripcion": "frente tipo normal", "imagen": "images/frente/hf002.jpg","indices":{
-          "fti":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":411,"y":204}
-          }
-        },
-        "codigo": "hf003", "descripcion": "frente tipo estrecha", "imagen": "images/frente/hf003.jpg","indices":{
-          "fti":{"x":22,"y":206},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":411,"y":204}
-          }
-        }
-      }
-      "cejas":{
-        "codigo": "hc001", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/hc001.jpg"},
-        {"codigo": "hc002", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/hc002.jpg"},
-        {"codigo": "hc003", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/hc003.jpg"},
-        {"codigo": "hc004", "descripcion": "ceja tipo recta", "imagen": "images/cejas/hc004.jpg"},
-        {"codigo": "hc005", "descripcion": "ceja tipo roto", "imagen": "images/cejas/hc005.jpg"}
-      ],
-      "ojos": [
-        {"codigo": "ho001", "descripcion": "ojos tipo estrechos", "imagen": "images/ojos/ho001.jpg"},
-        {"codigo": "ho002", "descripcion": "ojos tipo almendrados", "imagen": "images/ojos/ho002.jpg"},
-        {"codigo": "ho003", "descripcion": "ojos tipo asiaticos", "imagen": "images/ojos/ho003.jpg"},
-        {"codigo": "ho004", "descripcion": "ojos tipo prominentes", "imagen": "images/ojos/ho004.jpg"},
-        {"codigo": "ho005", "descripcion": "ojos tipo pequenos", "imagen": "images/ojos/ho005.jpg"}
-      ],
-      "nariz": [
-        {"codigo": "hn001", "descripcion": "nariz tipo recta", "imagen": "images/nariz/hn001.jpg"},
-        {"codigo": "hn002", "descripcion": "nariz tipo aguilena", "imagen": "images/nariz/hn002.jpg"},
-        {"codigo": "hn003", "descripcion": "nariz tipo chata", "imagen": "images/nariz/hn003.jpg"},
-        {"codigo": "hn004", "descripcion": "nariz tipo respingona", "imagen": "images/nariz/hn004.jpg"},
-        {"codigo": "hn005", "descripcion": "nariz tipo abultada", "imagen": "images/nariz/hn005.jpg"}
-      ],
-      "boca": [
-        {"codigo": "hb001", "descripcion": "boca tipo pequena con labios delgados", "imagen": "images/boca/hb001.jpg"},
-        {"codigo": "hb002", "descripcion": "boca tipo pequena con labios gruesos", "imagen": "images/boca/hb002.jpg"},
-        {"codigo": "hb003", "descripcion": "boca tipo mediana con labios delgados", "imagen": "images/boca/hb003.jpg"},
-        {"codigo": "hb004", "descripcion": "boca tipo mediana con labios gruesos", "imagen": "images/boca/hb004.jpg"},
-        {"codigo": "hb005", "descripcion": "boca tipo grande con labios delgados", "imagen": "images/boca/hb005.jpg"},
-        {"codigo": "hb006", "descripcion": "boca tipo grande con labios gruesos", "imagen": "images/boca/hb006.jpg"}
-      ],
-      "menton": [
-        {"codigo": "hm001", "descripcion": "menton tipo cuadrado", "imagen": "images/menton/hm001.jpg"},
-        {"codigo": "hm002", "descripcion": "menton tipo redondo", "imagen": "images/menton/hm002.jpg"},
-        {"codigo": "hm003", "descripcion": "menton tipo reducido", "imagen": "images/menton/hm003.jpg"},
-        {"codigo": "hm004", "descripcion": "menton tipo alargado", "imagen": "images/menton/hm004.jpg"},
-        {"codigo": "hm005", "descripcion": "menton tipo sobresaliente", "imagen": "images/menton/hm005.jpg"}
-      ],
-      "orejas": [
-        {"codigo": "hor001", "descripcion": "orejas tipo pequeñas normales", "imagen": "images/orejas/hor001.jpg"},
-        {"codigo": "hor002", "descripcion": "orejas tipo pequenas sobresalientes", "imagen": "images/orejas/hor002.jpgg"},
-        {"codigo": "hor003", "descripcion": "orejas tipo medianas normales", "imagen": "images/orejas/hor003.jpg"},
-        {"codigo": "hor004", "descripcion": "orejas tipo medianas sobresalientes", "imagen": "images/orejas/hor004.jpg"},
-        {"codigo": "hor005", "descripcion": "orejas tipo grandes normales", "imagen": "images/orejas/hor005.jpg"},
-        {"codigo": "hor006", "descripcion": "orejas tipo grandes sobresalientes", "imagen": "images/orejas/hor006.jpg"}
-      ]
-    },
-    "mujer": {
+    "hombres": {
       "pelo": [
-        {"codigo": "mp001", "descripcion": "pelo tipo lacio", "imagen": "images/pelo/mp001.jpg"},
-        {"codigo": "mp002", "descripcion": "pelo tipo rizado", "imagen": "images/pelo/mp002.jpg"}
+        {
+          "codigo": "hp001",
+          "descripcion": "pelo tipo corto lacio",
+          "imagen": "images/pelo/hp001.jpg",
+          "indices": {
+            "sai": { "x": 3, "y": 281 },
+            "tr":  { "x": 207, "y": 172 },
+            "sad": { "x": 417, "y": 281 }
+          }
+        },
+        {
+          "codigo": "hp002",
+          "descripcion": "pelo tipo corto rizado",
+          "imagen": "images/pelo/hp002.jpg",
+          "indices": {
+            "sai": { "x": 6, "y": 279 },
+            "tr":  { "x": 206, "y": 118 },
+            "sad": { "x": 414, "y": 281 }
+          }
+        }
       ],
       "frente": [
-        {"codigo": "mf001", "descripcion": "frente tipo media", "imagen": "images/frente/mf001.jpg"},
-        {"codigo": "mf002", "descripcion": "frente tipo ancha", "imagen": "images/frente/mf002.jpg"},
-        {"codigo": "mf003", "descripcion": "frente tipo estrecha", "imagen": "images/frente/mf003.jpg"}
+        {
+          "codigo": "hf001",
+          "descripcion": "frente tipo amplia",
+          "imagen": "images/frente/hf001.jpg",
+          "indices": {
+            "fti": { "x": 24, "y": 160 },
+            "tr":  { "x": 188, "y": 26 },
+            "ftd": { "x": 327, "y": 160 }
+          }
+        },
+        {
+          "codigo": "hf002",
+          "descripcion": "frente tipo nomrmal",
+          "imagen": "images/frente/hf002.jpg",
+          "indices": {
+            "fti": { "x": 25, "y": 143 },
+            "tr":  { "x": 181, "y": 24 },
+            "ftd": { "x": 318, "y": 140 }
+          }
+        },
+        {
+          "codigo": "hf003",
+          "descripcion": "frente tipo estrecha",
+          "imagen": "images/frente/hf003.jpg",
+          "indices": {
+            "fti": { "x": 21, "y": 125 },
+            "tr":  { "x": 181, "y": 22 },
+            "ftd": { "x": 315, "y": 125 }
+          }
+        }
       ],
       "cejas": [
-        {"codigo": "mc001", "descripcion": "ceja tipo sobresaliente", "imagen": "images/cejas/mc001.jpg"},
-        {"codigo": "mc002", "descripcion": "ceja tipo arqueada", "imagen": "images/cejas/mc002.jpg"},
-        {"codigo": "mc003", "descripcion": "ceja tipo triangular", "imagen": "images/cejas/mc003.jpg"},
-        {"codigo": "mc004", "descripcion": "ceja tipo recta", "imagen": "images/cejas/mc004.jpg"},
-        {"codigo": "mc005", "descripcion": "ceja tipo roto", "imagen": "images/cejas/mc005.jpg"}
+        {
+          "codigo": "hc001",
+          "descripcion": "cejas tipo sobresalientes",
+          "imagen": "images/cejas/hc001.jpg",
+          "indices": {
+            "fzi": { "x": 13,  "y": 43 },
+            "se": { "x": 182,  "y": 48 },
+            "fzd": { "x": 353, "y": 41 }
+          }
+        },
+        {
+          "codigo": "hc002",
+          "descripcion": "cejas tipo arqueadas",
+          "imagen": "images/cejas/hc002.jpg",
+          "indices": {
+            "fzi": { "x": 9,  "y": 35 },
+            "se": { "x": 184,  "y": 42 },
+            "fzd": { "x": 353, "y": 39 }
+          }
+        },{
+          "codigo": "hc003",
+          "descripcion": "cejas tipo triangular", 
+          "imagen": "images/cejas/hc003.jpg",
+          "indices": {
+            "fzi": { "x": 14,  "y": 49 },
+            "se": { "x": 181,  "y": 40 },
+            "fzd": { "x": 349, "y": 49 }
+          }
+        },
+        {
+          "codigo": "hc004",
+          "descripcion": "cejas tipo recto",
+          "imagen": "images/cejas/hc004.jpg",
+          "indices": {
+            "fzi": { "x": 12,  "y": 41 },
+            "se": { "x": 176,  "y": 49 },
+            "fzd": { "x": 349, "y": 36 }
+          }
+        },
+        {
+          "codigo": "hc005",
+          "descripcion": "cejas tipo roto",
+          "imagen": "images/cejas/hc005.jpg",
+          "indices": {
+            "fzi": { "x": 17,  "y": 44 },
+            "se": { "x": 182,  "y": 44 },
+            "fzd": { "x": 349, "y": 45 }
+          }
+        }
       ],
       "ojos": [
-        {"codigo": "mo001", "descripcion": "ojos tipo estrechos", "imagen": "images/ojos/mo001.jpg"},
-        {"codigo": "mo002", "descripcion": "ojos tipo almendrados", "imagen": "images/ojos/mo002.jpg"},
-        {"codigo": "mo003", "descripcion": "ojos tipo asiaticos", "imagen": "images/ojos/mo003.jpg"},
-        {"codigo": "mo004", "descripcion": "ojos tipo prominentes", "imagen": "images/ojos/mo004.jpg"},
-        {"codigo": "mo005", "descripcion": "ojos tipo pequenos", "imagen": "images/ojos/mo005.jpg"}
+        {
+          "codigo": "ho001",
+          "descripcion": "ojos tipo estrechos",
+          "imagen": "images/ojos/ho001.jpg",
+          "indices": {
+            "exi":     { "x": 33, "y": 29 },
+            "se":     { "x": 172, "y": 2 },
+            "exd": { "x": 315, "y": 29 }
+          }
+        },
+          {
+          "codigo": "ho002",
+          "descripcion": "ojos tipo almendrados",
+          "imagen": "images/ojos/ho002.jpg",
+          "indices": {
+            "exi":     { "x": 40, "y": 30 },
+            "se":     { "x": 180, "y": 9 },
+            "exd": { "x": 319, "y": 33 }
+          }
+        },
+            {
+          "codigo": "ho003",
+          "descripcion": "ojos tipo asiaticos",
+          "imagen": "images/ojos/ho003.jpg",
+          "indices": {
+            "exi":     { "x": 32, "y": 29 },
+            "se":     { "x": 175, "y": 4 },
+            "exd": { "x": 324, "y": 33 }
+          }
+        },
+            {
+          "codigo": "ho004",
+          "descripcion": "ojos tipo prominentes",
+          "imagen": "images/ojos/ho004.jpg",
+          "indices": {
+            "exi":     { "x": 23, "y": 30 },
+            "se":     { "x": 166, "y": 3 },
+            "exd": { "x": 308, "y": 29 }
+          }
+        }, 
+            {
+          "codigo": "ho005",
+          "descripcion": "ojos tipo pequeños",
+          "imagen": "images/ojos/ho005.jpg",
+          "indices": {
+            "exi":     { "x": 20, "y": 35 },
+            "se":     { "x": 178, "y": 5 },
+            "exd": { "x": 324, "y": 39 }
+          }
+        }      
       ],
       "nariz": [
-        {"codigo": "mn001", "descripcion": "nariz tipo recta", "imagen": "images/nariz/mn001.jpg"},
-        {"codigo": "mn002", "descripcion": "nariz tipo aguilena", "imagen": "images/nariz/mn002.jpg"},
-        {"codigo": "mn003", "descripcion": "nariz tipo chata", "imagen": "images/nariz/mn003.jpg"},
-        {"codigo": "mn004", "descripcion": "nariz tipo respingona", "imagen": "images/nariz/mn004.jpg"},
-        {"codigo": "mn005", "descripcion": "nariz tipo abultada", "imagen": "images/nariz/mn005.jpg"}
+        {
+          "codigo": "hn001",
+          "descripcion": "nariz tipo recta",
+          "imagen": "images/nariz/hn001.jpg",
+          "indices": {
+            "aci": { "x": 13, "y": 155 },
+            "rhi": { "x": 66, "y": 45 },
+            "acd":  { "x": 124, "y": 154 }
+          }
+        },
+        {
+          "codigo": "hn002",
+          "descripcion": "nariz tipo aguileña",
+          "imagen": "images/nariz/hn002.jpg",
+          "indices": {
+            "aci": { "x": 1, "y": 50 },
+            "rhi": { "x": 70, "y": 36 },
+            "acd":  { "x": 135, "y": 149 }
+          }
+        },
+        {
+          "codigo": "hn003",
+          "descripcion": "nariz tipo chata",
+          "imagen": "images/nariz/hn003.jpg",
+          "indices": {
+            "aci": { "x": 2, "y": 152 },
+            "rhi": { "x": 68, "y": 27 },
+            "acd":  { "x": 138, "y": 151 }
+          }
+        },
+        {
+          "codigo": "hn004",
+          "descripcion": "nariz tipo respingona",
+          "imagen": "images/nariz/hn004.jpg",
+          "indices": {
+            "aci": { "x": 4, "y": 151 },
+            "rhi": { "x": 73, "y": 41 },
+            "acd":  { "x": 134, "y": 151 }
+          }
+        },
+        {
+          "codigo": "hn005",
+          "descripcion": "nariz tipo abultada",
+          "imagen": "images/nariz/hn005.jpg",
+          "indices": {
+            "aci": { "x": 2, "y": 147 },
+            "rhi": { "x": 65, "y": 31 },
+            "acd":  { "x": 138, "y": 149 }
+          }
+        }
       ],
       "boca": [
-        {"codigo": "mb001", "descripcion": "boca tipo pequena con labios delgados", "imagen": "images/boca/mb001.jpg"},
-        {"codigo": "mb002", "descripcion": "boca tipo pequena con labios gruesos", "imagen": "images/boca/mb002.jpg"},
-        {"codigo": "mb003", "descripcion": "boca tipo mediana con labios delgados", "imagen": "images/boca/mb003.jpg"},
-        {"codigo": "mb004", "descripcion": "boca tipo mediana con labios gruesos", "imagen": "images/boca/mb004.jpg"},
-        {"codigo": "mb005", "descripcion": "boca tipo grande con labios delgados", "imagen": "images/boca/mb005.jpg"},
-        {"codigo": "mb006", "descripcion": "boca tipo grande con labios gruesos", "imagen": "images/boca/mb006.jpg"}
+        {
+          "codigo": "hb001",
+          "descripcion": "boca tipo pequeña con labios delgados",
+          "imagen": "images/boca/hb001.jpg",
+          "indices": {
+            "chi": { "x": 13, "y": 27 },
+            "sto": { "x": 80, "y": 28 },
+            "chd": { "x": 147, "y": 29 }
+          }
+        },
+                {
+          "codigo": "hb002",
+          "descripcion": "boca tipo pequeña con labios gruesos",
+          "imagen": "images/boca/hb002.jpg",
+          "indices": {
+            "chi": { "x": 7, "y": 29 },
+            "sto": { "x": 82, "y": 30 },
+            "chd": { "x": 157, "y": 32 }
+          }
+        },
+        {
+          "codigo": "hb003",
+          "descripcion": "boca tipo mediana con labios delgados",
+          "imagen": "images/boca/hb003.jpg",
+          "indices": {
+            "chi": { "x": 13, "y": 40 },
+            "sto": { "x": 87, "y": 32 },
+            "chd": { "x": 158, "y": 41 }
+          }
+        },
+        {
+          "codigo": "hb004",
+          "descripcion": "boca tipo mediana con labios gruesos",
+          "imagen": "images/boca/hb004.jpg",
+          "indices": {
+            "chi": { "x": 7, "y": 26 },
+            "sto": { "x": 86, "y": 25 },
+            "chd": { "x": 159, "y": 28 }
+          }
+        },
+        {
+          "codigo": "hb005",
+          "descripcion": "boca tipo grande con labios delgados",
+          "imagen": "images/boca/hb005.jpg",
+          "indices": {
+            "chi": { "x": 11, "y": 29 },
+            "sto": { "x": 92, "y": 30 },
+            "chd": { "x": 171, "y": 26 }
+          }
+        },
+        {
+          "codigo": "hb006",
+          "descripcion": "boca tipo grande con labios gruesos",
+          "imagen": "images/boca/hb006.jpg",
+          "indices": {
+            "chi": { "x": 9, "y": 26 },
+            "sto": { "x": 89, "y": 28 },
+            "chd": { "x": 166, "y": 28 }
+          }
+        }
       ],
       "menton": [
-        {"codigo": "mm001", "descripcion": "menton tipo cuadrado", "imagen": "images/menton/mm001.jpg"},
-        {"codigo": "mm002", "descripcion": "menton tipo redondo", "imagen": "images/menton/mm002.jpg"},
-        {"codigo": "mm003", "descripcion": "menton tipo reducido", "imagen": "images/menton/mm003.jpg"},
-        {"codigo": "mm004", "descripcion": "menton tipo alargado", "imagen": "images/menton/mm004.jpg"},
-        {"codigo": "mm005", "descripcion": "menton tipo sobresaliente", "imagen": "images/menton/mm005.jpg"}
+        {
+          "codigo": "hm001",
+          "descripcion": "mentón tipo cuadrado",
+          "imagen": "images/menton/hm001.jpg",
+          "indices": {
+            "gni": { "x": 8, "y": 8 },
+            "me": { "x": 142, "y": 86 },
+            "gnd": { "x": 287, "y": 4 }
+          }
+        },
+        {
+          "codigo": "hm002",
+          "descripcion": "mentón tipo redondo",
+          "imagen": "images/menton/hm002.jpg",
+          "indices": {
+            "gni": { "x": 13, "y": 7 },
+            "me": { "x": 160, "y": 96 },
+            "gnd": { "x": 288, "y": 5 }
+          }
+        },
+        {
+          "codigo": "hm003",
+          "descripcion": "mentón tipo reducido",
+          "imagen": "images/menton/hm003.jpg",
+          "indices": {
+            "gni": { "x": 17, "y": 10 },
+            "me": { "x": 155, "y": 89 },
+            "gnd": { "x": 285, "y": 11 }
+          }
+        },
+        {
+          "codigo": "hm004",
+          "descripcion": "mentón tipo alargado",
+          "imagen": "images/menton/hm004.jpg",
+          "indices": {
+            "gni": { "x": 12, "y": 12 },
+            "me": { "x": 157, "y": 98 },
+            "gnd": { "x": 286, "y": 9 }
+          }
+        },
+        {
+          "codigo": "hm005",
+          "descripcion": "mentón tipo sobresaliente",
+          "imagen": "images/menton/hm005.jpg",
+          "indices": {
+            "gni": { "x": 26, "y": 15 },
+            "me": { "x": 165, "y": 97 },
+            "gnd": { "x": 291, "y": 15 }
+          }
+        }
+
       ],
       "orejas": [
-        {"codigo": "mor001", "descripcion": "orejas tipo pequeñas normales", "imagen": "images/orejas/mor001.jpg"},
-        {"codigo": "mor002", "descripcion": "orejas tipo pequeñas sobresalientes", "imagen": "images/orejas/mor002.jpg"},
-        {"codigo": "mor003", "descripcion": "orejas tipo medianas normales", "imagen": "images/orejas/mor003.jpg"},
-        {"codigo": "mor004", "descripcion": "orejas tipo medianas sobresalientes", "imagen": "images/orejas/mor004.jpg"},
-        {"codigo": "mor005", "descripcion": "orejas tipo grandes normales", "imagen": "images/orejas/mor005.jpg"},
-        {"codigo": "mor006", "descripcion": "orejas tipo grandes sobresalientes", "imagen": "images/orejas/mor006.jpg"}
+        {
+          "codigo": "hor001",
+          "descripcion": "orejas tipo pequeñas normales",
+          "imagen": "images/orejas/hor001.jpg",
+          "indices": {
+            "sad": { "x": 46,  "y": 8 },
+            "zyd": { "x": 13,  "y": 85 },
+            "sbad": { "x": 9, "y": 139 }
+          }
+        },
+                {
+          "codigo": "hor002",
+          "descripcion": "orejas tipo pequeñas sobresalientes",
+          "imagen": "images/orejas/hor002.jpg",
+          "indices": {
+            "sad": { "x": 46,  "y": 5 },
+            "zyd": { "x": 18,  "y": 81 },
+            "sbad": { "x": 9, "y": 138 }
+          }
+        },
+        {
+          "codigo": "hor003",
+          "descripcion": "orejas tipo medianas normales",
+          "imagen": "images/orejas/hor003.jpg",
+          "indices": {
+            "sad": { "x": 47,  "y": 9 },
+            "zyd": { "x": 15,  "y": 94 },
+            "sbad": { "x": 7, "y": 144 }
+          }
+        },
+        {
+          "codigo": "hor004",
+          "descripcion": "orejas tipo medianas sobresaliente",
+          "imagen": "images/orejas/hor004.jpg",
+          "indices": {
+            "sad": { "x": 51,  "y": 3 },
+            "zyd": { "x": 17,  "y": 85 },
+            "sbad": { "x": 9, "y": 146 }
+          }
+        },
+        {
+          "codigo": "hor005",
+          "descripcion": "orejas tipo grandes normales",
+          "imagen": "images/orejas/hor005.jpg",
+          "indices": {
+            "sad": { "x": 46,  "y": 9 },
+            "zyd": { "x": 13,  "y": 103 },
+            "sbad": { "x": 7, "y": 154 }
+          }
+        },
+        {
+          "codigo": "hor006",
+          "descripcion": "orejas tipo grandes sobresalientes",
+          "imagen": "images/orejas/hor006.jpg",
+          "indices": {
+            "sad": { "x": 51,  "y": 6 },
+            "zyd": { "x": 18,  "y": 95 },
+            "sbad": { "x": 7, "y": 156 }
+          }
+        }
+      ]
+    },
+    "mujeres": {
+      "pelo": [
+        {
+          "codigo": "mp001",
+          "descripcion": "pelo tipo corto lacio",
+          "imagen": "images/pelo/mp001.jpg",
+          "indices": {
+            "sai": { "x": 9, "y": 281 },
+            "tr":  { "x": 236, "y": 164 },
+            "sad": { "x": 416, "y": 280 }
+          }
+        },
+        {
+          "codigo": "mp002",
+          "descripcion": "pelo tipo corto rizado",
+          "imagen": "images/pelo/mp002.jpg",
+          "indices": {
+            "sai": { "x": 20, "y": 272 },
+            "tr":  { "x": 216, "y": 68 },
+            "sad": { "x": 397, "y": 271 }
+          }
+        }
+      ],
+      "frente": [
+        {
+          "codigo": "mf001",
+          "descripcion": "frente tipo amplia",
+          "imagen": "images/frente/mf001.jpg",
+          "indices": {
+            "fti": { "x": 18, "y": 166 },
+            "tr":  { "x": 178, "y": 40 },
+            "ftd": { "x": 324, "y": 166 }
+          }
+        },
+        {
+          "codigo": "mf002",
+          "descripcion": "frente tipo nomrmal",
+          "imagen": "images/frente/mf002.jpg",
+          "indices": {
+            "fti": { "x": 24, "y": 146 },
+            "tr":  { "x": 176, "y": 31 },
+            "ftd": { "x": 327, "y": 146 }
+          }
+        },
+        {
+          "codigo": "mf003",
+          "descripcion": "frente tipo estrecha",
+          "imagen": "images/frente/mf003.jpg",
+          "indices": {
+            "fti": { "x": 17, "y": 128 },
+            "tr":  { "x": 180, "y": 28 },
+            "ftd": { "x": 328, "y": 130 }
+          }
+        }
+      ],
+      "cejas": [
+        {
+          "codigo": "mc001",
+          "descripcion": "cejas tipo sobresalientes",
+          "imagen": "images/cejas/mc001.jpg",
+          "indices": {
+            "fzi": { "x": 17,  "y": 39 },
+            "se": { "x": 180,  "y": 48 },
+            "fzd": { "x": 352, "y": 39 }
+          }
+        },
+        {
+          "codigo": "mc002",
+          "descripcion": "cejas tipo arqueadas",
+          "imagen": "images/cejas/mc002.jpg",
+          "indices": {
+            "fzi": { "x": 10,  "y": 50 },
+            "se": { "x": 184,  "y": 44 },
+            "fzd": { "x": 357, "y": 49 }
+          }
+        },{
+          "codigo": "mc003",
+          "descripcion": "cejas tipo triangular", 
+          "imagen": "images/cejas/mc003.jpg",
+          "indices": {
+            "fzi": { "x": 21,  "y": 43 },
+            "se": { "x": 194,  "y": 46 },
+            "fzd": { "x": 353, "y": 46 }
+          }
+        },
+        {
+          "codigo": "mc004",
+          "descripcion": "cejas tipo recto",
+          "imagen": "images/cejas/mc004.jpg",
+          "indices": {
+            "fzi": { "x": 15,  "y": 44 },
+            "se": { "x": 188,  "y": 36 },
+            "fzd": { "x": 351, "y": 46 }
+          }
+        },
+        {
+          "codigo": "mc005",
+          "descripcion": "cejas tipo roto",
+          "imagen": "images/cejas/mc005.jpg",
+          "indices": {
+            "fzi": { "x": 17,  "y": 43 },
+            "se": { "x": 194,  "y": 40 },
+            "fzd": { "x": 349, "y": 42 }
+          }
+        }
+      ],
+      "ojos": [
+        {
+          "codigo": "mo001",
+          "descripcion": "ojos tipo estrechos",
+          "imagen": "images/ojos/mo001.jpg",
+          "indices": {
+            "exi":     { "x": 37, "y": 34 },
+            "se":     { "x": 182, "y": 5 },
+            "exd": { "x": 322, "y": 34 }
+          }
+        },
+          {
+          "codigo": "mo002",
+          "descripcion": "ojos tipo almendrados",
+          "imagen": "images/ojos/mo002.jpg",
+          "indices": {
+            "exi":     { "x": 37, "y": 29 },
+            "se":     { "x": 175, "y": 4 },
+            "exd": { "x": 313, "y": 27 }
+          }
+        },
+            {
+          "codigo": "mo003",
+          "descripcion": "ojos tipo asiaticos",
+          "imagen": "images/ojos/mo003.jpg",
+          "indices": {
+            "exi":     { "x": 37, "y": 27 },
+            "se":     { "x": 162, "y": 5 },
+            "exd": { "x": 302, "y": 25 }
+          }
+        },
+            {
+          "codigo": "mo004",
+          "descripcion": "ojos tipo prominentes",
+          "imagen": "images/ojos/mo004.jpg",
+          "indices": {
+            "exi":     { "x": 27, "y": 28 },
+            "se":     { "x": 174, "y": 4 },
+            "exd": { "x": 316, "y": 33 }
+          }
+        }, 
+            {
+          "codigo": "mo005",
+          "descripcion": "ojos tipo pequeños",
+          "imagen": "images/ojos/mo005.jpg",
+          "indices": {
+            "exi":     { "x": 42, "y": 23 },
+            "se":     { "x": 169, "y": 3 },
+            "exd": { "x": 297, "y": 24 }
+          }
+        }      
+      ],
+      "nariz": [
+        {
+          "codigo": "mn001",
+          "descripcion": "nariz tipo recta",
+          "imagen": "images/nariz/mn001.jpg",
+          "indices": {
+            "aci": { "x": 13, "y": 147 },
+            "rhi": { "x": 73, "y": 24 },
+            "acd":  { "x": 127, "y": 151 }
+          }
+        },
+        {
+          "codigo": "mn002",
+          "descripcion": "nariz tipo aguileña",
+          "imagen": "images/nariz/mn002.jpg",
+          "indices": {
+            "aci": { "x": 3, "y": 144 },
+            "rhi": { "x": 65, "y": 21 },
+            "acd":  { "x": 133, "y": 145 }
+          }
+        },
+        {
+          "codigo": "mn003",
+          "descripcion": "nariz tipo chata",
+          "imagen": "images/nariz/mn003.jpg",
+          "indices": {
+            "aci": { "x": 2, "y": 143 },
+            "rhi": { "x": 71, "y": 32 },
+            "acd":  { "x": 138, "y": 146 }
+          }
+        },
+        {
+          "codigo": "mn004",
+          "descripcion": "nariz tipo respingona",
+          "imagen": "images/nariz/mn004.jpg",
+          "indices": {
+            "aci": { "x": 9, "y": 148 },
+            "rhi": { "x": 66, "y": 31 },
+            "acd":  { "x": 132, "y": 149 }
+          }
+        },
+        {
+          "codigo": "mn005",
+          "descripcion": "nariz tipo abultada",
+          "imagen": "images/nariz/mn005.jpg",
+          "indices": {
+            "aci": { "x": 3, "y": 143 },
+            "rhi": { "x": 69, "y": 19 },
+            "acd":  { "x": 137, "y": 143 }
+          }
+        }
+      ],
+      "boca": [
+        {
+          "codigo": "mb001",
+          "descripcion": "boca tipo pequeña con labios delgados",
+          "imagen": "images/boca/mb001.jpg",
+          "indices": {
+            "chi": { "x": 12, "y": 34 },
+            "sto": { "x": 83, "y": 32 },
+            "chd": { "x": 155, "y": 35 }
+          }
+        },
+                {
+          "codigo": "mb002",
+          "descripcion": "boca tipo pequeña con labios gruesos",
+          "imagen": "images/boca/mb002.jpg",
+          "indices": {
+            "chi": { "x": 11, "y": 33 },
+            "sto": { "x": 86, "y": 32 },
+            "chd": { "x": 156, "y": 35 }
+          }
+        },
+        {
+          "codigo": "mb003",
+          "descripcion": "boca tipo mediana con labios delgados",
+          "imagen": "images/boca/mb003.jpg",
+          "indices": {
+            "chi": { "x": 17, "y": 28 },
+            "sto": { "x": 90, "y": 37 },
+            "chd": { "x": 156, "y": 30 }
+          }
+        },
+        {
+          "codigo": "mb004",
+          "descripcion": "boca tipo mediana con labios gruesos",
+          "imagen": "images/boca/mb004.jpg",
+          "indices": {
+            "chi": { "x": 18, "y": 41 },
+            "sto": { "x": 86, "y": 36 },
+            "chd": { "x": 156, "y": 43 }
+          }
+        },
+        {
+          "codigo": "mb005",
+          "descripcion": "boca tipo grande con labios delgados",
+          "imagen": "images/boca/mb005.jpg",
+          "indices": {
+            "chi": { "x": 8, "y": 35 },
+            "sto": { "x": 88, "y": 41 },
+            "chd": { "x": 166, "y": 38 }
+          }
+        },
+        {
+          "codigo": "mb006",
+          "descripcion": "boca tipo grande con labios gruesos",
+          "imagen": "images/boca/mb006.jpg",
+          "indices": {
+            "chi": { "x": 5, "y": 45 },
+            "sto": { "x": 86, "y": 43 },
+            "chd": { "x": 168, "y": 47 }
+          }
+        }
+      ],
+      "menton": [
+        {
+          "codigo": "mm001",
+          "descripcion": "mentón tipo cuadrado",
+          "imagen": "images/menton/mm001.jpg",
+          "indices": {
+            "gni": { "x": 8, "y": 14 },
+            "me": { "x": 151, "y": 93 },
+            "gnd": { "x": 277, "y": 14 }
+          }
+        },
+        {
+          "codigo": "mm002",
+          "descripcion": "mentón tipo redondo",
+          "imagen": "images/menton/mm002.jpg",
+          "indices": {
+            "gni": { "x": 18, "y": 16 },
+            "me": { "x": 157, "y": 91 },
+            "gnd": { "x": 283, "y": 13 }
+          }
+        },
+        {
+          "codigo": "mm003",
+          "descripcion": "mentón tipo reducido",
+          "imagen": "images/menton/mm003.jpg",
+          "indices": {
+            "gni": { "x": 32, "y": 10 },
+            "me": { "x": 149, "y": 77 },
+            "gnd": { "x": 272, "y": 10}
+          }
+        },
+        {
+          "codigo": "mm004",
+          "descripcion": "mentón tipo alargado",
+          "imagen": "images/menton/mm004.jpg",
+          "indices": {
+            "gni": { "x": 27, "y": 12 },
+            "me": { "x": 157, "y": 82 },
+            "gnd": { "x": 264, "y": 11 }
+          }
+        },
+        {
+          "codigo": "mm005",
+          "descripcion": "mentón tipo sobresaliente",
+          "imagen": "images/menton/mm005.jpg",
+          "indices": {
+            "gni": { "x": 28, "y": 16 },
+            "me": { "x": 177, "y": 87 },
+            "gnd": { "x": 296, "y": 10 }
+          }
+        }
+
+      ],
+      "orejas": [
+        {
+          "codigo": "mor001",
+          "descripcion": "orejas tipo pequeñas normales",
+          "imagen": "images/orejas/mor001.jpg",
+          "indices": {
+            "sad": { "x": 49,  "y": 8 },
+            "zyd": { "x": 21,  "y": 86 },
+            "sbad": { "x": 17, "y": 138 }
+          }
+        },
+                {
+          "codigo": "mor002",
+          "descripcion": "orejas tipo pequeñas sobresalientes",
+          "imagen": "images/orejas/mor002.jpg",
+          "indices": {
+            "sad": { "x": 52,  "y": 8 },
+            "zyd": { "x": 13,  "y": 84 },
+            "sbad": { "x": 10, "y": 137 }
+          }
+        },
+        {
+          "codigo": "mor003",
+          "descripcion": "orejas tipo medianas normales",
+          "imagen": "images/orejas/mor003.jpg",
+          "indices": {
+            "sad": { "x": 51,  "y": 11 },
+            "zyd": { "x": 25,  "y": 92 },
+            "sbad": { "x": 20, "y": 146 }
+          }
+        },
+        {
+          "codigo": "mor004",
+          "descripcion": "orejas tipo medianas sobresaliente",
+          "imagen": "images/orejas/mor004.jpg",
+          "indices": {
+            "sad": { "x": 43,  "y": 6 },
+            "zyd": { "x": 11,  "y": 95 },
+            "sbad": { "x": 7, "y": 146 }
+          }
+        },
+        {
+          "codigo": "mor005",
+          "descripcion": "orejas tipo grandes normales",
+          "imagen": "images/orejas/mor005.jpg",
+          "indices": {
+            "sad": { "x": 51,  "y": 8 },
+            "zyd": { "x": 26,  "y": 94 },
+            "sbad": { "x": 17, "y": 158 }
+          }
+        },
+        {
+          "codigo": "mor006",
+          "descripcion": "orejas tipo grandes sobresalientes",
+          "imagen": "images/orejas/mor006.jpg",
+          "indices": {
+            "sad": { "x": 43,  "y": 4 },
+            "zyd": { "x": 13,  "y": 97 },
+            "sbad": { "x": 9, "y": 155 }
+          }
+        }
       ]
     }
   }
 }
+
+
+
+
+        
+
