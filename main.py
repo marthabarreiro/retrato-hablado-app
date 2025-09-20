@@ -7,14 +7,15 @@ import tools
 from custom_widgets import ImageTextButton
 
 
-class Root(BoxLayout):
+class MainWindow(BoxLayout):
     data = ObjectProperty(
         None
     )  # Contiene toso los datos en un dataframe para hacer consultas
 
     def __init__(self, **kwargs):
-        super(Root, self).__init__(**kwargs)
-        self.data = tools.load_data()
+        super(MainWindow, self).__init__(**kwargs)
+        # self.data = tools.load_data()
+        pass
 
     def apply_selection(self):
         print("Aqui se aplica las herramientas matematicas")
@@ -30,7 +31,7 @@ class MainApp(App):
         self.load_data(part=self.catalog[self.index])
         self.root.ids.prev_button.disabled = True
 
-    def load_data(self, genre: str = "hombre", part: str = "ojos"):
+    def read_df(self, genre: str = "hombre", part: str = "ojos"):
         # Cargar datos desde rostro_catalogo.json usando pandas
         df = pd.read_json("rostro_catalogo.json")
         data = df.query("genero==@genre and parte_x==@part")
@@ -70,7 +71,7 @@ class MainApp(App):
         genre = "hombre" if self.root.ids.cb_hombre.active else "mujer"
         if self.catalog is None:
             self.catalog = tools.load_catalog()
-        self.load_data(genre=genre, part=self.catalog[self.index])
+        self.read_df(genre=genre, part=self.catalog[self.index])
 
     def quit(self):
         self.stop()

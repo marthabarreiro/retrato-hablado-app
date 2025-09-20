@@ -23,26 +23,38 @@ def load_data():
     with open("rostro_catalogo.json", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Extraer todas las partes de hombre y mujer en una sola lista
+    # Cargar tipos_rostro
+    tipos_rostro = []
+    for rostro in data.get("tipos_rostro", []):
+        tipos_rostro.append(
+            {
+                "codigo": rostro.get("codigo"),
+                "descripcion": rostro.get("descripcion"),
+                "imagen": rostro.get("imagen"),
+                "indices": rostro.get("indices", {}),
+            }
+        )
+    df_rostros = pd.DataFrame(tipos_rostro)
+
+    # Cargar partes (hombres y mujeres)
     partes = []
-    for genero in ["hombre", "mujer"]:
-        for parte, items in data[genero]["partes"].items():
+    for genero in ["hombres", "mujeres"]:
+        for parte, items in data["partes"][genero].items():
             for item in items:
                 partes.append(
                     {
                         "genero": genero,
                         "parte": parte,
-                        "codigo": item["codigo"],
-                        "descripcion": item["descripcion"],
-                        "imagen": item["imagen"],
+                        "codigo": item.get("codigo"),
+                        "descripcion": item.get("descripcion"),
+                        "imagen": item.get("imagen"),
                         "indices": item.get("indices", {}),
                     }
                 )
+    df_partes = pd.DataFrame(partes)
 
-    # Crear el DataFrame
-    df = pd.DataFrame(partes)
-
-    return df
+    # Retornar ambos DataFrames en un diccionario
+    return {"tipos_rostro": df_rostros, "partes": df_partes}
 
 
 def load_catalog():
