@@ -19,7 +19,7 @@ def get_image_path(image_name):
     return None
 
 
-def load_data():
+def read_file():
     with open("rostro_catalogo.json", encoding="utf-8") as f:
         data = json.load(f)
 
