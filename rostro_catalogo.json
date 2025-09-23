@@ -1,5 +1,5 @@
 {
-  "tipos_rostro": [
+  "tipo_rostro": [
       {"codigo": "tp001", "descripcion": "tipo de rostro rectangular", "imagen": "images/plantillas/tp001_pc.fw.png","indices":{
         "pelo":{
           "sai":{"x":22,"y":206},

@@ -23,26 +23,30 @@ def read_file():
     with open("rostro_catalogo.json", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Cargar tipos_rostro
-    tipos_rostro = []
-    for rostro in data.get("tipos_rostro", []):
-        tipos_rostro.append(
+    # Lista para almacenar todos los registros
+    todos_registros = []
+
+    # Cargar tipos_rostro con etiqueta específica
+    for rostro in data.get("tipo_rostro", []):
+        todos_registros.append(
             {
+                "tipo": "tipo_rostro",  # Identificador del tipo de elemento
+                "genero": "unisex",  # Los tipos de rostro son unisex
+                "parte": "tipo_rostro",
                 "codigo": rostro.get("codigo"),
                 "descripcion": rostro.get("descripcion"),
                 "imagen": rostro.get("imagen"),
                 "indices": rostro.get("indices", {}),
             }
         )
-    df_rostros = pd.DataFrame(tipos_rostro)
 
     # Cargar partes (hombres y mujeres)
-    partes = []
     for genero in ["hombres", "mujeres"]:
         for parte, items in data["partes"][genero].items():
             for item in items:
-                partes.append(
+                todos_registros.append(
                     {
+                        "tipo": "parte_facial",  # Identificador del tipo de elemento
                         "genero": genero,
                         "parte": parte,
                         "codigo": item.get("codigo"),
@@ -51,10 +55,10 @@ def read_file():
                         "indices": item.get("indices", {}),
                     }
                 )
-    df_partes = pd.DataFrame(partes)
 
-    # Retornar ambos DataFrames en un diccionario
-    return {"tipos_rostro": df_rostros, "partes": df_partes}
+    # Crear un solo DataFrame con todos los registros
+    df_unificado = pd.DataFrame(todos_registros)
+    return df_unificado
 
 
 def load_catalog():
