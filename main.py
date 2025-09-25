@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, ListProperty
 import pandas as pd
 
 import tools
@@ -8,25 +8,29 @@ from custom_widgets import ImageTextButton
 
 
 class MainWindow(BoxLayout):
-    data = ObjectProperty(
-        None
-    )  # Contiene toso los datos en un dataframe para hacer consultas
-
-    def __init__(self, **kwargs):
-        super(MainWindow, self).__init__(**kwargs)
-        # self.data = tools.load_data()
-        pass
-
-    def apply_selection(self):
-        print("Aqui se aplica las herramientas matematicas")
+    pass
 
 
 class MainApp(App):
     gruoped_features = BoxLayout(orientation="vertical", size_hint_y=2.0)
     parts_catalog = ObjectProperty(None)
-    catalog = ObjectProperty(None)
+    catalog = ListProperty([])
     index = 0
-    face_images = ObjectProperty(None)
+    face_images = ListProperty([])
+
+    def on_face_image_added(self, code):
+        part = self.parts_catalog.loc[self.parts_catalog["codigo"] == code, "parte"].values[0] if not self.parts_catalog is None else None
+        if self.face_images is None or len(self.face_images) == 0:
+            self.face_images.append({"part": part, "code": code})
+        elif part in [f["part"] for f in self.face_images]:
+            for i, f in enumerate(self.face_images):
+                if f["part"] == part:
+                    self.face_images[i] = {"part": part, "code": code}
+                    break
+        else:
+            self.face_images.append({"part": part, "code": code})
+            
+
 
     def on_start(self):
         self.root.ids.cb_hombre.active = True

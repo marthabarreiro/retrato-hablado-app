@@ -33,21 +33,6 @@ class ImageTextButton(BoxLayout):
 
     def on_button_click(self, instance):
         print(f"Button clicked: {self.id_button}")
-
-        # Acceder al contexto del DataFrame a través de la aplicación
         if self.app_instance:
-            # Acceso al catálogo
-            parts_catalog = self.app_instance.parts_catalog
-
-            # Buscar la imagen correspondiente al código seleccionado
-            registro = parts_catalog[parts_catalog["codigo"] == self.id_button]
-
-            if not registro.empty:
-                imagen_path = registro.iloc[0]["imagen"]
-                print(f"Imagen seleccionada: {imagen_path}")
-
-                # Actualizar la imagen en el right_box
-                self.app_instance.root.ids.build_image.source = imagen_path
-
-                # Guardar referencia de la imagen seleccionada
-                self.app_instance.face_image = imagen_path
+            code = self.id_button
+            self.app_instance.on_face_image_added(code)
