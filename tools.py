@@ -61,12 +61,8 @@ def read_file():
     return df_unificado
 
 
-def load_catalog():
-    catalog_df = pd.read_csv("catalog.csv")
-    return catalog_df.parte.unique()
-
-
 def redimenxiona_misma_forma(image_list):
+    image_list = [cv.imread(img_path, cv.IMREAD_GRAYSCALE) for img_path in image_list]
     # Encontrar las dimensiones máximas (alto y ancho) de las imágenes
     max_height = max(img.shape[0] for img in image_list)
     max_width = max(img.shape[1] for img in image_list)
@@ -106,7 +102,7 @@ def redimenxiona_misma_forma(image_list):
     return padded_images
 
 
-def seleccionar_boca_ovalada(img, centro=None, tamaño_ovalo=None):
+def recortar_ovalo(img, centro=None, tamaño_ovalo=None):
     # Cargar imagen
     if img is None:
         raise ValueError("No se pudo cargar la imagen.")
@@ -133,7 +129,7 @@ def seleccionar_boca_ovalada(img, centro=None, tamaño_ovalo=None):
     return resultado
 
 
-def bordes_boca_frecuencial(
+def bordes_frecuencial(
     img,
     r=10,
     umbral=10,
@@ -157,15 +153,25 @@ def bordes_boca_frecuencial(
     f = np.fft.fft2(img)
     fshift = np.fft.fftshift(f)
 
-    # Crear filtro de paso alto (máscara circular en el centro)
+    # Crear filtro de paso alto gaussiano (máscara gaussiana en el centro)
     rows, cols = img.shape
     crow, ccol = rows // 2, cols // 2
-    mask = np.ones((rows, cols), np.uint8)
-    # r = 10  # radio del área central (bajas frecuencias)
-    mask[crow - r : crow + r, ccol - r : ccol + r] = 0
+
+    # Crear coordenadas para la máscara gaussiana
+    x = np.arange(0, cols)
+    y = np.arange(0, rows)
+    xx, yy = np.meshgrid(x, y)
+
+    # Calcular distancia desde el centro
+    distance = np.sqrt((xx - ccol) ** 2 + (yy - crow) ** 2)
+
+    # Crear máscara gaussiana invertida (paso alto)
+    # sigma controla el ancho de la gaussiana (relacionado con r)
+    sigma = r / 2.0
+    gaussian_mask = 1 - np.exp(-(distance**2) / (2 * sigma**2))
 
     # Aplicar filtro en el dominio frecuencial
-    fshift_filtrado = fshift * mask
+    fshift_filtrado = fshift * gaussian_mask
 
     # Transformada inversa para regresar al dominio espacial
     f_ishift = np.fft.ifftshift(fshift_filtrado)
@@ -203,3 +209,94 @@ def show_image(image, title="Image"):
     cv.imshow(title, image)
     cv.waitKey(0)
     cv.destroyAllWindows()
+
+
+def filtro_dodge_burn(imagen_gris):
+    """
+    Efecto de boceto usando técnicas de dodge y burn.
+
+    Este método simula el proceso fotográfico tradicional de dodge (aclarar)
+    y burn (oscurecer) para crear un efecto de dibujo a lápiz realista.
+
+    Proceso:
+    1. Inversión de la imagen para obtener un "negativo"
+    2. Desenfoque del negativo para crear una capa de textura suave
+    3. Dodge blending: división de color que realza los contrastes
+
+    Args:
+        imagen_gris: Imagen en escala de grises (np.ndarray)
+
+    Returns:
+        np.ndarray: Imagen con efecto de boceto artístico
+    """
+    # 1. Invertir la imagen (negativo fotográfico)
+    # Convierte píxeles oscuros en claros y viceversa
+    # Fórmula: pixel_invertido = 255 - pixel_original
+    imagen_invertida = cv.bitwise_not(imagen_gris)
+    # 2. Aplicar desenfoque gaussiano a la imagen invertida
+    # El kernel (21, 21) crea un desenfoque suave que preserva estructuras
+    # grandes mientras elimina detalles finos
+    # Esto actúa como una "capa de iluminación difusa"
+    imagen_blur = cv.GaussianBlur(imagen_invertida, (21, 21), 0)
+
+    # 3. Aplicar la operación de "dodge" (aclarado fotográfico)
+    # Esta técnica simula exponer selectivamente áreas de la imagen
+    def dodge(front, back):
+        """
+        Dodge blend mode (modo de mezcla aclarar).
+
+        Fórmula: resultado = (front * 256) / (256 - back)
+
+        Donde:
+        - front: imagen original (capa frontal)
+        - back: imagen desenfocada invertida (capa de fondo)
+        - 256: escala para evitar saturación
+
+        El resultado realza los bordes y crea el efecto de dibujo
+        porque las áreas claras se vuelven más brillantes mientras
+        que las áreas oscuras mantienen contraste.
+        """
+        # cv.divide con scale=256 implementa: (front * 256) / (256 - back)
+        # Evita división por cero y normaliza automáticamente a 0-255
+        result = cv.divide(front, 255 - back, scale=256)
+        return result
+
+    # Aplicar dodge blending entre la imagen original y el blur invertido
+    # Esto crea el efecto final de boceto al lápiz
+    boceto = dodge(imagen_gris, imagen_blur)
+    boceto = recortar_ovalo(boceto)
+    return boceto
+
+
+def flip_image(image: np.ndarray) -> np.ndarray:
+    return cv.flip(image, 0)
+
+
+def suma_imagenes_dominio_frecuencial(imgs: list):
+    # Asegurarse de que todas las imágenes tengan el mismo tamaño
+    imgs_redimensionadas = redimenxiona_misma_forma(imgs)
+
+    # Inicializar la suma en el dominio frecuencial
+    suma_frecuencial = None
+
+    for img in imgs_redimensionadas:
+        # Aquí se aplica el filtro
+        img = filtro_dodge_burn(img)
+        # Transformada de Fourier 2D
+        f = np.fft.fft2(img)
+        fshift = np.fft.fftshift(f)
+
+        if suma_frecuencial is None:
+            suma_frecuencial = fshift
+        else:
+            suma_frecuencial += fshift
+
+    # Transformada inversa para regresar al dominio espacial
+    f_ishift = np.fft.ifftshift(suma_frecuencial)
+    img_suma = np.fft.ifft2(f_ishift)
+    img_suma = np.abs(img_suma)
+
+    # Normalizar la imagen resultante a 0-255
+    img_suma_norm = normalizar_grises(img_suma)
+
+    return img_suma_norm

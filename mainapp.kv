@@ -53,9 +53,18 @@ MainWindow:
             size_hint_x: 0.4
             Image:
                 id: build_image
-                size_hint_y: 0.9
+                size_hint_y: 0.7
                 source: 'images/no-image.jpg'
                 fit_mode: "contain"
+            Label:
+                id: messages
+                size_hint_y: 0.2
+                text_size: self.width - dp(10), self.height - dp(10)
+                halign: 'center'
+                valign: 'middle'
+                font_size: self.height * 0.1
+                text: "Bienvenido"
+                padding: dp(10), dp(10)
             BoxLayout:
                 orientation: 'horizontal'
                 size_hint_y: 0.1

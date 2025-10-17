@@ -1,7 +1,7 @@
 from kivy.app import App
+from kivy.graphics.texture import Texture
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty, ListProperty
-import pandas as pd
 
 import tools
 from custom_widgets import ImageTextButton
@@ -19,18 +19,63 @@ class MainApp(App):
     face_images = ListProperty([])
 
     def on_face_image_added(self, code):
-        part = self.parts_catalog.loc[self.parts_catalog["codigo"] == code, "parte"].values[0] if not self.parts_catalog is None else None
-        if self.face_images is None or len(self.face_images) == 0:
-            self.face_images.append({"part": part, "code": code})
+        part = (
+            self.parts_catalog.loc[
+                self.parts_catalog["codigo"] == code, "parte"
+            ].values[0]
+            if not self.parts_catalog is None
+            else None
+        )
+
+        if (
+            self.face_images is None
+            or len(self.face_images) == 0
+            and part != "tipo_rostro"
+        ):
+            self.root.ids.messages.text = f"Error: Primero debes escoger un tipo de rostro antes de seleccionar otros rasgos."
         elif part in [f["part"] for f in self.face_images]:
             for i, f in enumerate(self.face_images):
                 if f["part"] == part:
                     self.face_images[i] = {"part": part, "code": code}
                     break
+            self.show_description()
         else:
             self.face_images.append({"part": part, "code": code})
-            
+            self.show_description()
 
+    def show_description(self):
+        self.root.ids.messages.text = "Rasgos seleccionados:\n"
+        for f in self.face_images:
+            desc = self.parts_catalog.loc[
+                (self.parts_catalog["parte"] == f["part"])
+                & (self.parts_catalog["codigo"] == f["code"]),
+                "descripcion",
+            ].values[0]
+            self.root.ids.messages.text += f"- {desc} "
+        img_paths = self.get_images_paths()
+        boceto = tools.suma_imagenes_dominio_frecuencial(img_paths)
+        # Voltear verticalmente la imagen para corregir el sistema de coordenadas
+        # OpenCV usa origen arriba-izquierda, Kivy/OpenGL usa origen abajo-izquierda
+        boceto = tools.flip_image(boceto)
+
+        height, width = boceto.shape
+        boceto_texture = Texture.create(size=(width, height), colorfmt="luminance")
+        boceto_texture.blit_buffer(
+            boceto.tobytes(), colorfmt="luminance", bufferfmt="ubyte"
+        )
+        self.root.ids.build_image.texture = boceto_texture
+
+    def get_images_paths(self):
+        paths = []
+        for f in self.face_images:
+            img_path = self.parts_catalog.loc[
+                (self.parts_catalog["parte"] == f["part"])
+                & (self.parts_catalog["codigo"] == f["code"]),
+                "imagen",
+            ].values[0]
+            if img_path is not None:
+                paths.append(img_path)
+        return paths
 
     def on_start(self):
         self.root.ids.cb_hombre.active = True
