@@ -52,18 +52,23 @@ class MainApp(App):
                 "descripcion",
             ].values[0]
             self.root.ids.messages.text += f"- {desc} "
-        img_paths = self.get_images_paths()
-        boceto = tools.suma_imagenes_dominio_frecuencial(img_paths)
-        # Voltear verticalmente la imagen para corregir el sistema de coordenadas
-        # OpenCV usa origen arriba-izquierda, Kivy/OpenGL usa origen abajo-izquierda
-        boceto = tools.flip_image(boceto)
+        self.create_face_sketch()
 
-        height, width = boceto.shape
-        boceto_texture = Texture.create(size=(width, height), colorfmt="luminance")
-        boceto_texture.blit_buffer(
-            boceto.tobytes(), colorfmt="luminance", bufferfmt="ubyte"
-        )
-        self.root.ids.build_image.texture = boceto_texture
+    def create_face_sketch(self):
+        face_parts_data = self.get_parts_data()
+        if len(face_parts_data) > 1:
+            boceto = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
+
+            # Voltear verticalmente la imagen para corregir el sistema de coordenadas
+            # OpenCV usa origen arriba-izquierda, Kivy/OpenGL usa origen abajo-izquierda
+            boceto = tools.flip_image(boceto)
+
+            height, width = boceto.shape
+            boceto_texture = Texture.create(size=(width, height), colorfmt="luminance")
+            boceto_texture.blit_buffer(
+                boceto.tobytes(), colorfmt="luminance", bufferfmt="ubyte"
+            )
+            self.root.ids.build_image.texture = boceto_texture
 
     def get_images_paths(self):
         paths = []
@@ -76,6 +81,16 @@ class MainApp(App):
             if img_path is not None:
                 paths.append(img_path)
         return paths
+
+    def get_parts_data(self):
+        parts_data = []
+        for f in self.face_images:
+            part_info = self.parts_catalog.loc[
+                (self.parts_catalog["parte"] == f["part"])
+                & (self.parts_catalog["codigo"] == f["code"])
+            ].to_dict(orient="records")[0]
+            parts_data.append(part_info)
+        return parts_data
 
     def on_start(self):
         self.root.ids.cb_hombre.active = True
@@ -130,12 +145,24 @@ class MainApp(App):
             self.root.ids.prev_button.disabled = True
 
     def change_genre(self):
+        self.reset_app()
         genre = "hombres" if self.root.ids.cb_hombre.active else "mujeres"
         if self.parts_catalog is None:
             self.load_data()
         else:
             self.load_data(genre=genre)
         print(f"Cambio a {genre}")
+
+    def reset_app(self):
+        self.index = 0
+        self.face_images = []
+        self.root.ids.build_image.texture = None
+        self.load_data()
+        self.root.ids.prev_button.disabled = True
+        self.root.ids.next_button.disabled = False
+        self.root.ids.messages.text = (
+            "Selecciona los rasgos faciales para crear el retrato hablado."
+        )
 
     def quit(self):
         self.stop()
