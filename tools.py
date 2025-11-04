@@ -319,6 +319,34 @@ def flip_image(image: np.ndarray) -> np.ndarray:
     return cv.flip(image, 0)
 
 
+def save_image(image: np.ndarray, output_dir: str = "output") -> str:
+    """
+    Guarda una imagen en el directorio especificado con nombre basado en timestamp.
+
+    Args:
+        image: Imagen a guardar (np.ndarray)
+        output_dir: Directorio donde guardar la imagen (por defecto "output")
+
+    Returns:
+        str: Ruta completa donde se guardó la imagen
+    """
+    import datetime
+
+    # Crear directorio si no existe
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Generar nombre único con timestamp
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"retrato_hablado_{timestamp}.png"
+    filepath = os.path.join(output_dir, filename)
+
+    # Guardar imagen
+    cv.imwrite(filepath, image)
+
+    return filepath
+
+
 def suma_imagenes_dominio_frecuencial(parts_data: list):
     """
     Suma imágenes de partes faciales en el dominio frecuencial.

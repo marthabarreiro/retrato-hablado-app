@@ -164,6 +164,54 @@ class MainApp(App):
             "Selecciona los rasgos faciales para crear el retrato hablado."
         )
 
+    def save_image(self):
+        if self.root.ids.build_image.texture is None:
+            self.root.ids.messages.text = "Error: No hay imagen para guardar."
+            return
+
+        # Abrir diálogo para seleccionar dónde guardar
+        from tkinter import Tk, filedialog
+        import datetime
+
+        # Crear ventana invisible de tkinter
+        root = Tk()
+        root.withdraw()  # Ocultar la ventana principal
+        root.attributes("-topmost", True)  # Traer al frente
+
+        # Generar nombre sugerido con timestamp
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        default_filename = f"retrato_hablado_{timestamp}.png"
+
+        # Abrir diálogo para guardar archivo
+        filepath = filedialog.asksaveasfilename(
+            title="Guardar retrato hablado",
+            defaultextension=".png",
+            initialfile=default_filename,
+            filetypes=[
+                ("PNG files", "*.png"),
+                ("JPEG files", "*.jpg"),
+                ("All files", "*.*"),
+            ],
+        )
+
+        root.destroy()  # Cerrar ventana de tkinter
+
+        # Si el usuario canceló, no hacer nada
+        if not filepath:
+            self.root.ids.messages.text = "Guardado cancelado."
+            return
+
+        # Generar boceto y guardar
+        face_parts_data = self.get_parts_data()
+        boceto = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
+
+        # Guardar en la ruta seleccionada
+        import cv2
+
+        cv2.imwrite(filepath, boceto)
+
+        self.root.ids.messages.text = f"Imagen guardada en: {filepath}"
+
     def quit(self):
         self.stop()
 

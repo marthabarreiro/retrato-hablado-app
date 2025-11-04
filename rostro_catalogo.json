@@ -12,9 +12,9 @@
           "ftd":{"x":366,"y":162}
           },
         "cejas":{
-          "fzi":{"x":77,"y":219},
+          "fzi":{"x":77,"y":211},
           "se":{"x":221,"y":222},
-          "fzd":{"x":363,"y":217}
+          "fzd":{"x":363,"y":208}
           },
         "ojos":{
           "exi":{"x":107,"y":236},
@@ -32,9 +32,9 @@
           "chd":{"x":284,"y":417}
           },
         "menton":{
-          "gni":{"x":74,"y":460},
-          "me":{"x":222,"y":551},
-          "gnd":{"x":372,"y":456}
+          "gni":{"x":89,"y":458},
+          "me":{"x":221,"y":546},
+          "gnd":{"x":344,"y":459}
           },
         "orejas":{
           "sad":{"x":411,"y":206},
@@ -392,8 +392,8 @@
           "descripcion": "nariz tipo aguileña",
           "imagen": "images/nariz/hn002.jpg",
           "indices": {
-            "aci": { "x": 1, "y": 50 },
-            "rhi": { "x": 70, "y": 36 },
+            "aci": { "x": 3, "y": 150 },
+            "rhi": { "x": 65, "y": 36 },
             "acd":  { "x": 135, "y": 149 }
           }
         },
@@ -884,9 +884,9 @@
           "descripcion": "mentón tipo cuadrado",
           "imagen": "images/menton/mm001.jpg",
           "indices": {
-            "gni": { "x": 8, "y": 14 },
-            "me": { "x": 151, "y": 93 },
-            "gnd": { "x": 277, "y": 14 }
+            "gni": { "x": 8, "y": 8 },
+            "me": { "x": 142, "y": 86 },
+            "gnd": { "x": 287, "y": 4 }
           }
         },
         {
@@ -896,7 +896,7 @@
           "indices": {
             "gni": { "x": 18, "y": 16 },
             "me": { "x": 157, "y": 91 },
-            "gnd": { "x": 283, "y": 13 }
+            "gnd": { "x": 283, "y": 24 }
           }
         },
         {
@@ -904,9 +904,9 @@
           "descripcion": "mentón tipo reducido",
           "imagen": "images/menton/mm003.jpg",
           "indices": {
-            "gni": { "x": 32, "y": 10 },
-            "me": { "x": 149, "y": 77 },
-            "gnd": { "x": 272, "y": 10}
+            "gni": { "x": 17, "y": 22 },
+            "me": { "x": 152, "y": 93 },
+            "gnd": { "x": 272, "y": 28 }
           }
         },
         {
@@ -914,9 +914,9 @@
           "descripcion": "mentón tipo alargado",
           "imagen": "images/menton/mm004.jpg",
           "indices": {
-            "gni": { "x": 27, "y": 12 },
-            "me": { "x": 157, "y": 82 },
-            "gnd": { "x": 264, "y": 11 }
+            "gni": { "x": 5, "y": 19 },
+            "me": { "x": 154, "y": 77 },
+            "gnd": { "x": 287, "y": 22 }
           }
         },
         {

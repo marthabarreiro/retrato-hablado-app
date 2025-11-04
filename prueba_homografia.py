@@ -27,8 +27,8 @@ def distancia(p1, p2):
 
 
 # Cargar imágenes
-rostro = cv2.imread("images/plantillas/tp003_pc.fw.png")
-componente = cv2.imread("images/orejas/hor001.jpg")
+rostro = cv2.imread("images/plantillas/tp001_pc.fw.png")
+componente = cv2.imread("images/menton/mm001.jpg")
 
 rostro_copy = rostro.copy()
 

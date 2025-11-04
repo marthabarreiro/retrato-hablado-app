@@ -56,15 +56,21 @@ MainWindow:
                 size_hint_y: 0.7
                 source: 'images/no-image.jpg'
                 fit_mode: "contain"
-            Label:
-                id: messages
+            ScrollView:
                 size_hint_y: 0.2
-                text_size: self.width - dp(10), self.height - dp(10)
-                halign: 'center'
-                valign: 'middle'
-                font_size: self.height * 0.1
-                text: "Bienvenido"
-                padding: dp(10), dp(10)
+                do_scroll_x: False
+                do_scroll_y: True
+                bar_width: dp(10)
+                Label:
+                    id: messages
+                    size_hint_y: None
+                    height: self.texture_size[1] + dp(20)
+                    text_size: self.width - dp(20), None
+                    halign: 'left'
+                    valign: 'top'
+                    font_size: dp(11)
+                    text: "Bienvenido"
+                    padding: dp(10), dp(10)
             BoxLayout:
                 orientation: 'horizontal'
                 size_hint_y: 0.1
@@ -74,5 +80,5 @@ MainWindow:
                     on_release: app.reset_app()
                 Button
                     id: fin
-                    text: "Finalizar"
-                    on_release: app.quit()
+                    text: "Guardar Finalizar"
+                    on_press: app.save_image()
