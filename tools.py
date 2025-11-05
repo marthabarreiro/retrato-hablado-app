@@ -369,16 +369,36 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
     }
 
     # Cargar las partes faciales (resto de elementos)
-    imgs_list = [
-        {
-            "imagen": filtro_dodge_burn(
-                cv.imread(part_data["imagen"], cv.IMREAD_GRAYSCALE)
-            ),
-            "parte": part_data.get("parte", ""),
-            "indices": part_data.get("indices", {}),
-        }
-        for part_data in parts_data[1:]
-    ]
+    imgs_list = []
+    for part_data in parts_data[1:]:
+        if part_data.get("parte") != "orejas":
+            imgs_list.append(
+                {
+                    "imagen": filtro_dodge_burn(
+                        cv.imread(part_data["imagen"], cv.IMREAD_GRAYSCALE)
+                    ),
+                    "parte": part_data.get("parte", ""),
+                    "indices": part_data.get("indices", {}),
+                }
+            )
+        else:
+            # Agregar la imagen original de la oreja
+            imagen_oreja = cv.imread(part_data["imagen"], cv.IMREAD_GRAYSCALE)
+            imgs_list.append(
+                {
+                    "imagen": filtro_dodge_burn(imagen_oreja),
+                    "parte": part_data.get("parte", ""),
+                    "indices": part_data.get("indices", {}),
+                }
+            )
+            # Agregar la imagen con flip horizontal
+            imgs_list.append(
+                {
+                    "imagen": filtro_dodge_burn(cv.flip(imagen_oreja, 1)),
+                    "parte": "orejas_flip",
+                    "indices": part_data.get("indices", {}),
+                }
+            )
     # Inicializar la suma en el dominio frecuencial
     suma_frecuencial = None
 

@@ -6,11 +6,6 @@
           "tr":{"x":222,"y":47},
           "sad":{"x":411,"y":204}
           },
-        "frente":{
-          "fti":{"x":69,"y":161},
-          "tr":{"x":222,"y":47},
-          "ftd":{"x":366,"y":162}
-          },
         "cejas":{
           "fzi":{"x":77,"y":211},
           "se":{"x":221,"y":222},
@@ -40,7 +35,12 @@
           "sad":{"x":411,"y":206},
           "zyd":{"x":395,"y":277},
           "sbad":{"x":391,"y":341}
-          }
+          },
+        "orejas_flip":{
+          "sad":{"x":29,"y":206},
+          "zyd":{"x":45,"y":276},
+          "sbad":{"x":49,"y":341}
+        }
         }
       },
       {"codigo": "tp002", "descripcion": "tipo de rostro redondo", "imagen": "images/plantillas/tp002_pc.fw.png","indices":{
@@ -48,11 +48,6 @@
           "sai":{"x":21,"y":207},
           "tr":{"x":223,"y":45},
           "sad":{"x":419,"y":204}
-          },
-        "frente":{
-          "fti":{"x":70,"y":161},
-          "tr":{"x":223,"y":47},
-          "ftd":{"x":366,"y":161}
           },
         "cejas":{
           "fzi":{"x":77,"y":219},
@@ -83,6 +78,11 @@
           "sad":{"x":419,"y":206},
           "zyd":{"x":406,"y":276},
           "sbad":{"x":394,"y":341}
+          },
+          "orejas_flip":{
+            "sad":{"x":29,"y":206},
+          "zyd":{"x":45,"y":276},
+          "sbad":{"x":49,"y":341}
           }
         }
       },
@@ -91,11 +91,6 @@
           "sai":{"x":12,"y":206},
           "tr":{"x":222,"y":52},
           "sad":{"x":423,"y":205}
-          },
-        "frente":{
-          "fti":{"x":69,"y":161},
-          "tr":{"x":223,"y":52},
-          "ftd":{"x":366,"y":161}
           },
         "cejas":{
           "fzi":{"x":77,"y":219},
@@ -126,6 +121,11 @@
           "sad":{"x":423,"y":204},
           "zyd":{"x":407,"y":276},
           "sbad":{"x":395,"y":341}
+          },
+          "orejas_flip":{
+            "sad":{"x":29,"y":206},
+            "zyd":{"x":45,"y":276},
+            "sbad":{"x":49,"y":341}
           }
         }
       },
@@ -134,11 +134,6 @@
           "sai":{"x":18,"y":206},
           "tr":{"x":223,"y":45},
           "sad":{"x":419,"y":206}
-          },
-        "frente":{
-          "fti":{"x":68,"y":161},
-          "tr":{"x":221,"y":45},
-          "ftd":{"x":365,"y":163}
           },
         "cejas":{
           "fzi":{"x":76,"y":219},
@@ -169,7 +164,12 @@
           "sad":{"x":418,"y":205},
           "zyd":{"x":404,"y":276},
           "sbad":{"x":392,"y":341}
-          }
+          },
+          "orejas_flip":{
+          "sad":{"x":29,"y":206},
+          "zyd":{"x":45,"y":276},
+          "sbad":{"x":49,"y":341}
+        }
         }
       },
       {"codigo": "tp005", "descripcion": "tipo de rostro triangular", "imagen": "images/plantillas/tp005_pc.fw.png", "indices":{
@@ -177,11 +177,6 @@
           "sai":{"x":23,"y":206},
           "tr":{"x":222,"y":46},
           "sad":{"x":421,"y":204}
-          },
-        "frente":{
-          "fti":{"x":69,"y":161},
-          "tr":{"x":222,"y":48},
-          "ftd":{"x":366,"y":162}
           },
         "cejas":{
           "fzi":{"x":76,"y":219},
@@ -212,7 +207,12 @@
           "sad":{"x":420,"y":205},
           "zyd":{"x":404,"y":275},
           "sbad":{"x":396,"y":340}
-          }
+          },
+          "orejas_flip":{
+          "sad":{"x":29,"y":206},
+          "zyd":{"x":45,"y":276},
+          "sbad":{"x":49,"y":341}
+        }
         }
       }
 
@@ -238,38 +238,6 @@
             "sai": { "x": 6, "y": 279 },
             "tr":  { "x": 206, "y": 118 },
             "sad": { "x": 414, "y": 281 }
-          }
-        }
-      ],
-      "frente": [
-        {
-          "codigo": "hf001",
-          "descripcion": "frente tipo amplia",
-          "imagen": "images/frente/hf001.jpg",
-          "indices": {
-            "fti": { "x": 24, "y": 160 },
-            "tr":  { "x": 188, "y": 26 },
-            "ftd": { "x": 327, "y": 160 }
-          }
-        },
-        {
-          "codigo": "hf002",
-          "descripcion": "frente tipo nomrmal",
-          "imagen": "images/frente/hf002.jpg",
-          "indices": {
-            "fti": { "x": 25, "y": 143 },
-            "tr":  { "x": 181, "y": 24 },
-            "ftd": { "x": 318, "y": 140 }
-          }
-        },
-        {
-          "codigo": "hf003",
-          "descripcion": "frente tipo estrecha",
-          "imagen": "images/frente/hf003.jpg",
-          "indices": {
-            "fti": { "x": 21, "y": 125 },
-            "tr":  { "x": 181, "y": 22 },
-            "ftd": { "x": 315, "y": 125 }
           }
         }
       ],
@@ -626,38 +594,6 @@
             "sai": { "x": 20, "y": 272 },
             "tr":  { "x": 216, "y": 68 },
             "sad": { "x": 397, "y": 271 }
-          }
-        }
-      ],
-      "frente": [
-        {
-          "codigo": "mf001",
-          "descripcion": "frente tipo amplia",
-          "imagen": "images/frente/mf001.jpg",
-          "indices": {
-            "fti": { "x": 18, "y": 166 },
-            "tr":  { "x": 178, "y": 40 },
-            "ftd": { "x": 324, "y": 166 }
-          }
-        },
-        {
-          "codigo": "mf002",
-          "descripcion": "frente tipo nomrmal",
-          "imagen": "images/frente/mf002.jpg",
-          "indices": {
-            "fti": { "x": 24, "y": 146 },
-            "tr":  { "x": 176, "y": 31 },
-            "ftd": { "x": 327, "y": 146 }
-          }
-        },
-        {
-          "codigo": "mf003",
-          "descripcion": "frente tipo estrecha",
-          "imagen": "images/frente/mf003.jpg",
-          "indices": {
-            "fti": { "x": 17, "y": 128 },
-            "tr":  { "x": 180, "y": 28 },
-            "ftd": { "x": 328, "y": 130 }
           }
         }
       ],
