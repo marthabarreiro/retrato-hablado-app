@@ -1,7 +1,10 @@
+import datetime
+from tkinter import Tk, filedialog
+
 from kivy.app import App
 from kivy.graphics.texture import Texture
-from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty, ListProperty
+from kivy.uix.boxlayout import BoxLayout
 
 import tools
 from custom_widgets import ImageTextButton
@@ -168,10 +171,6 @@ class MainApp(App):
         if self.root.ids.build_image.texture is None:
             self.root.ids.messages.text = "Error: No hay imagen para guardar."
             return
-
-        # Abrir diálogo para seleccionar dónde guardar
-        from tkinter import Tk, filedialog
-        import datetime
 
         # Crear ventana invisible de tkinter
         root = Tk()
