@@ -1,9 +1,7 @@
 import json
 import os
-from typing import Tuple
-
-import cv2 as cv
 import numpy as np
+import cv2 as cv
 import pandas as pd
 
 
@@ -315,6 +313,11 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
         "indices": parts_data[0].get("indices", {}),
     }
 
+    # Ajustar el tono de piel de las partes faciales al de la plantilla
+    only_imgs_list = [cv.imread(part_data["imagen"]) for part_data in parts_data[1:]]
+    if len(only_imgs_list) >= 4:
+        imgs_list_same_skin = match_skin_tone(only_imgs_list, ref_index=3)
+
     # Cargar las partes faciales (resto de elementos)
     imgs_list = []
     for part_data in parts_data[1:]:
@@ -348,6 +351,7 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
             )
     # Inicializar la suma en el dominio frecuencial
     suma_frecuencial = None
+    suma_same_skin = None
 
     for i in range(len(imgs_list)):
         img = colocar_parte_en_plantilla(
@@ -356,7 +360,25 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
             plantilla["indices"].get(imgs_list[i]["parte"], {}),
             imgs_list[i]["indices"],
         )
-        # img = filtro_dodge_burn(img)
+
+        try:
+            img_same_skin = colocar_parte_en_plantilla(
+                cv.cvtColor(plantilla["imagen"], cv.COLOR_GRAY2BGR),
+                aplica_mascara_cuadrada_suavizada(imgs_list_same_skin[i], padding=5),
+                plantilla["indices"].get(imgs_list[i]["parte"], {}),
+                imgs_list[i]["indices"],
+            )
+            if suma_same_skin is None:
+                suma_same_skin = img_same_skin
+            else:
+                # cv.addWeighted(
+                #     suma_same_skin, 0.5, img_same_skin, 0.5, 0, suma_same_skin
+                # )
+                suma_same_skin += img_same_skin
+            # show_image(img_same_skin, title="Parte con tono de piel ajustado")
+        except Exception as e:
+            print(f"Error: {e}")
+
         # Transformada de Fourier 2D
         f = np.fft.fft2(img)
         fshift = np.fft.fftshift(f)
@@ -366,6 +388,10 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
         else:
             suma_frecuencial += fshift
 
+    if suma_same_skin is not None:
+        show_image(
+            suma_same_skin.astype(np.uint8), title="Rostro con tono de piel ajustado"
+        )
     # Transformada inversa para regresar al dominio espacial
     f_ishift = np.fft.ifftshift(suma_frecuencial)
     img_suma = np.fft.ifft2(f_ishift)
@@ -374,7 +400,9 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
     # Normalizar la imagen resultante a 0-255
     img_suma_norm = normalizar_grises(img_suma)
 
-    return img_suma_norm
+    return img_suma_norm, (
+        suma_same_skin.astype(np.uint8) if suma_same_skin is not None else None
+    )
 
 
 def colocar_parte_en_plantilla(
@@ -496,3 +524,129 @@ def colocar_parte_en_plantilla(
                         output[yi, xi] = pixel
 
     return output
+
+
+def skin_mask(img):
+    # img_ycrcb = cv.cvtColor(img, cv.COLOR_BGR2YCrCb)
+    # mask = cv.inRange(img_ycrcb, np.array([0, 133, 77]), np.array([255, 173, 127]))
+    # return cv.GaussianBlur(mask, (7, 7), 0)
+    img_hsv = cv.cvtColor(img, cv.COLOR_BGR2HSV)
+    img_ycrcb = cv.cvtColor(img, cv.COLOR_BGR2YCrCb)
+
+    H, S, V = cv.split(img_hsv)
+    Y, Cr, Cb = cv.split(img_ycrcb)
+
+    # Rango piel en HSV
+    mask1 = cv.inRange(img_hsv, (0, 40, 0), (25, 255, 255))
+    mask2 = cv.inRange(img_hsv, (165, 40, 0), (180, 255, 255))  # tonos rojos extremos
+
+    hsv_mask = cv.bitwise_or(mask1, mask2)
+
+    # Rango piel en YCrCb (mucho más preciso)
+    ycrcb_mask = cv.inRange(img_ycrcb, (0, 135, 85), (255, 180, 135))
+
+    # Combinar ambas máscaras
+    mask = cv.bitwise_and(hsv_mask, ycrcb_mask)
+
+    # Suavizar bordes
+    mask = cv.medianBlur(mask, 7)
+    mask = cv.GaussianBlur(mask, (9, 9), 0)
+
+    # ELIMINAR OJOS Y LABIOS (zonas oscuras brillantes)
+    # Crear una máscara inversa basada en luminancia
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    eyes_mouth = cv.threshold(gray, 200, 255, cv.THRESH_BINARY)[1]
+    eyes_mouth = cv.GaussianBlur(eyes_mouth, (17, 17), 0)
+
+    # Quitar ojos/dientes
+    mask = cv.bitwise_and(mask, cv.bitwise_not(eyes_mouth))
+
+    return mask
+
+
+def reinhard_color_transfer(src, target, mask_src, mask_tgt):
+    # # Convertir a LAB
+    # src_lab = cv.cvtColor(src, cv.COLOR_BGR2LAB).astype(np.float32)
+    # tgt_lab = cv.cvtColor(target, cv.COLOR_BGR2LAB).astype(np.float32)
+
+    # # Extraer píxeles de piel en ambas imágenes
+    # src_pixels = src_lab[mask_src > 0]
+    # tgt_pixels = tgt_lab[mask_tgt > 0]
+
+    # # Si alguna máscara está vacía, regresar la imagen original
+    # if len(src_pixels) == 0 or len(tgt_pixels) == 0:
+    #     return src
+
+    # # Estadísticas
+    # src_mean, src_std = src_pixels.mean(axis=0), src_pixels.std(axis=0)
+    # tgt_mean, tgt_std = tgt_pixels.mean(axis=0), tgt_pixels.std(axis=0)
+
+    # src_std[src_std == 0] = 1
+
+    # # Aplicar a todos los píxeles de piel del src
+    # result = src_lab.copy()
+    # result[mask_src > 0] = ((src_pixels - src_mean) * (tgt_std / src_std)) + tgt_mean
+
+    # result = np.clip(result, 0, 255)
+    # result_bgr = cv.cvtColor(result.astype(np.uint8), cv.COLOR_LAB2BGR)
+    # return result_bgr
+    src_lab = cv.cvtColor(src, cv.COLOR_BGR2LAB).astype(np.float32)
+    tgt_lab = cv.cvtColor(target, cv.COLOR_BGR2LAB).astype(np.float32)
+
+    # canales
+    Ls, As, Bs = cv.split(src_lab)
+    Lt, At, Bt = cv.split(tgt_lab)
+
+    # Extraer pixels de piel
+    As_pix = As[mask_src > 0]
+    Bs_pix = Bs[mask_src > 0]
+
+    At_pix = At[mask_tgt > 0]
+    Bt_pix = Bt[mask_tgt > 0]
+
+    if len(As_pix) == 0 or len(At_pix) == 0:
+        return src
+
+    # medias y std
+    mean_As, std_As = As_pix.mean(), As_pix.std()
+    mean_Bs, std_Bs = Bs_pix.mean(), Bs_pix.std()
+
+    mean_At, std_At = At_pix.mean(), At_pix.std()
+    mean_Bt, std_Bt = Bt_pix.mean(), Bt_pix.std()
+
+    std_As = max(std_As, 1)
+    std_Bs = max(std_Bs, 1)
+
+    # NUEVOS valores para A y B solo en zonas de piel
+    A_new = As.copy()
+    B_new = Bs.copy()
+
+    A_new[mask_src > 0] = ((As_pix - mean_As) * (std_At / std_As)) + mean_At
+    B_new[mask_src > 0] = ((Bs_pix - mean_Bs) * (std_Bt / std_Bs)) + mean_Bt
+
+    # Ensamblar imagen
+    result_lab = cv.merge([Ls, A_new, B_new])
+    result = cv.cvtColor(result_lab.astype(np.uint8), cv.COLOR_LAB2BGR)
+
+    return result
+
+
+def match_skin_tone(images, ref_index=0):
+    reference = images[ref_index]
+    mask_ref = skin_mask(reference)
+
+    adjusted_images = []
+
+    for i, img in enumerate(images):
+        if i == ref_index:
+            adjusted_images.append(img)
+            continue
+
+        mask_src = skin_mask(img)
+
+        result = reinhard_color_transfer(img, reference, mask_src, mask_ref)
+        result = cv.bilateralFilter(result, 7, 50, 50)
+
+        adjusted_images.append(result)
+
+    return adjusted_images

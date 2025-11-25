@@ -60,7 +60,7 @@ class MainApp(App):
     def create_face_sketch(self):
         face_parts_data = self.get_parts_data()
         if len(face_parts_data) > 1:
-            boceto = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
+            boceto, _ = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
 
             # Voltear verticalmente la imagen para corregir el sistema de coordenadas
             # OpenCV usa origen arriba-izquierda, Kivy/OpenGL usa origen abajo-izquierda
@@ -202,12 +202,13 @@ class MainApp(App):
 
         # Generar boceto y guardar
         face_parts_data = self.get_parts_data()
-        boceto = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
+        boceto, real = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
 
         # Guardar en la ruta seleccionada
         import cv2
 
         cv2.imwrite(filepath, boceto)
+        # cv2.imwrite(filepath, real)
 
         self.root.ids.messages.text = f"Imagen guardada en: {filepath}"
 
