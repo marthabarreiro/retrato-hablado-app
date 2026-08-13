@@ -1,10 +1,10 @@
 import datetime
 from tkinter import Tk, filedialog
-
 from kivy.app import App
 from kivy.graphics.texture import Texture
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.uix.boxlayout import BoxLayout
+import cv2
 
 import tools
 from custom_widgets import ImageTextButton
@@ -202,10 +202,7 @@ class MainApp(App):
 
         # Generar boceto y guardar
         face_parts_data = self.get_parts_data()
-        boceto, real = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
-
-        # Guardar en la ruta seleccionada
-        import cv2
+        boceto, recortes = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
 
         cv2.imwrite(filepath, boceto)
         # cv2.imwrite(filepath, real)

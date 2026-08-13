@@ -203,7 +203,7 @@ def show_image(image, title="Image"):
     cv.destroyAllWindows()
 
 
-def filtro_dodge_burn(imagen_gris):
+def filtro_dodge(imagen_gris):
     """
     Efecto de boceto usando técnicas de dodge y burn.
 
@@ -221,43 +221,14 @@ def filtro_dodge_burn(imagen_gris):
     Returns:
         np.ndarray: Imagen con efecto de boceto artístico
     """
-    # 1. Invertir la imagen (negativo fotográfico)
-    # Convierte píxeles oscuros en claros y viceversa
-    # Fórmula: pixel_invertido = 255 - pixel_original
-    imagen_invertida = cv.bitwise_not(imagen_gris)
-    # 2. Aplicar desenfoque gaussiano a la imagen invertida
-    # El kernel (21, 21) crea un desenfoque suave que preserva estructuras
-    # grandes mientras elimina detalles finos
-    # Esto actúa como una "capa de iluminación difusa"
-    imagen_blur = cv.GaussianBlur(imagen_invertida, (21, 21), 0)
-
-    # 3. Aplicar la operación de "dodge" (aclarado fotográfico)
-    # Esta técnica simula exponer selectivamente áreas de la imagen
-    def dodge(front, back):
-        """
-        Dodge blend mode (modo de mezcla aclarar).
-
-        Fórmula: resultado = (front * 256) / (256 - back)
-
-        Donde:
-        - front: imagen original (capa frontal)
-        - back: imagen desenfocada invertida (capa de fondo)
-        - 256: escala para evitar saturación
-
-        El resultado realza los bordes y crea el efecto de dibujo
-        porque las áreas claras se vuelven más brillantes mientras
-        que las áreas oscuras mantienen contraste.
-        """
-        # cv.divide con scale=256 implementa: (front * 256) / (256 - back)
-        # Evita división por cero y normaliza automáticamente a 0-255
-        result = cv.divide(front, 255 - back, scale=256)
-        return result
-
-    # Aplicar dodge blending entre la imagen original y el blur invertido
-    # Esto crea el efecto final de boceto al lápiz
-    boceto = dodge(imagen_gris, imagen_blur)
-    # boceto = recortar_ovalo(boceto)
-    return boceto
+    inverted_image = cv.bitwise_not(imagen_gris)
+    imagen_blur = cv.GaussianBlur(inverted_image, (21, 21), sigmaX=0, sigmaY=0)
+    img = imagen_gris.astype(np.float32)
+    blur = imagen_blur.astype(np.float32)
+    epsilon = 1e-6
+    sketch = cv.divide(img, 255.0 - blur + epsilon, scale=256.0)
+    sketch = np.clip(sketch, 0, 255).astype(np.uint8)
+    return sketch
 
 
 def flip_image(image: np.ndarray) -> np.ndarray:
@@ -315,20 +286,22 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
 
     # Ajustar el tono de piel de las partes faciales al de la plantilla
     only_imgs_list = [cv.imread(part_data["imagen"]) for part_data in parts_data[1:]]
+    imgs_list_same_skin = []
     if len(only_imgs_list) >= 4:
         imgs_list_same_skin = match_skin_tone(only_imgs_list, ref_index=3)
 
     # Cargar las partes faciales (resto de elementos)
     imgs_list = []
-    for part_data in parts_data[1:]:
+    for idx, part_data in enumerate(parts_data[1:]):
         if part_data.get("parte") != "orejas":
             imgs_list.append(
                 {
-                    "imagen": filtro_dodge_burn(
+                    "imagen": filtro_dodge(
                         cv.imread(part_data["imagen"], cv.IMREAD_GRAYSCALE)
                     ),
                     "parte": part_data.get("parte", ""),
                     "indices": part_data.get("indices", {}),
+                    "original_idx": idx,
                 }
             )
         else:
@@ -336,17 +309,19 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
             imagen_oreja = cv.imread(part_data["imagen"], cv.IMREAD_GRAYSCALE)
             imgs_list.append(
                 {
-                    "imagen": filtro_dodge_burn(imagen_oreja),
-                    "parte": part_data.get("parte", ""),
+                    "imagen": filtro_dodge(imagen_oreja),
+                    "parte": "orejas",
                     "indices": part_data.get("indices", {}),
+                    "original_idx": idx,
                 }
             )
             # Agregar la imagen con flip horizontal
             imgs_list.append(
                 {
-                    "imagen": filtro_dodge_burn(cv.flip(imagen_oreja, 1)),
+                    "imagen": filtro_dodge(cv.flip(imagen_oreja, 1)),
                     "parte": "orejas_flip",
                     "indices": part_data.get("indices", {}),
+                    "original_idx": idx,
                 }
             )
     # Inicializar la suma en el dominio frecuencial
@@ -361,23 +336,31 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
             imgs_list[i]["indices"],
         )
 
-        try:
-            img_same_skin = colocar_parte_en_plantilla(
-                cv.cvtColor(plantilla["imagen"], cv.COLOR_GRAY2BGR),
-                aplica_mascara_cuadrada_suavizada(imgs_list_same_skin[i], padding=5),
-                plantilla["indices"].get(imgs_list[i]["parte"], {}),
-                imgs_list[i]["indices"],
-            )
-            if suma_same_skin is None:
-                suma_same_skin = img_same_skin
-            else:
-                # cv.addWeighted(
-                #     suma_same_skin, 0.5, img_same_skin, 0.5, 0, suma_same_skin
-                # )
-                suma_same_skin += img_same_skin
-            # show_image(img_same_skin, title="Parte con tono de piel ajustado")
-        except Exception as e:
-            print(f"Error: {e}")
+        # Manejar la versión con tono de piel ajustado
+        original_idx = imgs_list[i].get("original_idx")
+        if original_idx is not None and original_idx < len(imgs_list_same_skin):
+            try:
+                skin_img = imgs_list_same_skin[original_idx]
+                # Si es la oreja con flip, aplicar el flip también a la imagen con piel
+                if imgs_list[i]["parte"] == "orejas_flip":
+                    skin_img = cv.flip(skin_img, 1)
+                
+                img_same_skin = colocar_parte_en_plantilla(
+                    cv.cvtColor(plantilla["imagen"], cv.COLOR_GRAY2BGR),
+                    aplica_mascara_cuadrada_suavizada(skin_img, padding=5),
+                    plantilla["indices"].get(imgs_list[i]["parte"], {}),
+                    imgs_list[i]["indices"],
+                )
+                
+                if suma_same_skin is None:
+                    suma_same_skin = img_same_skin
+                else:
+                    # Solo rellenar píxeles vacíos (blancos), no sumar en intersecciones
+                    mask_vacio = np.all(suma_same_skin > 250, axis=2)
+                    suma_same_skin[mask_vacio] = img_same_skin[mask_vacio]
+                    
+            except Exception as e:
+                print(f"Error ajustando tono de piel: {e}")
 
         # Transformada de Fourier 2D
         f = np.fft.fft2(img)
@@ -388,21 +371,22 @@ def suma_imagenes_dominio_frecuencial(parts_data: list):
         else:
             suma_frecuencial += fshift
 
-    if suma_same_skin is not None:
-        show_image(
-            suma_same_skin.astype(np.uint8), title="Rostro con tono de piel ajustado"
-        )
+    # Se muestra imagen con tono ajustado solo para comprobar, esto es código muerto y puede ser eliminado si no se necesita
+    # if suma_same_skin is not None and len(only_imgs_list) >= 4:
+    #     show_image(
+    #         suma_same_skin.astype(np.uint8), title="Rostro con tono de piel ajustado"
+    #     )
     # Transformada inversa para regresar al dominio espacial
     f_ishift = np.fft.ifftshift(suma_frecuencial)
     img_suma = np.fft.ifft2(f_ishift)
     img_suma = np.abs(img_suma)
 
     # Normalizar la imagen resultante a 0-255
-    img_suma_norm = normalizar_grises(img_suma)
+    boceto_final = normalizar_grises(img_suma)
+    # Normalizar la imagen con tono de piel ajustado a 0-255 si existe
+    boceto_recortes = suma_same_skin.astype(np.uint8) if suma_same_skin is not None else None
 
-    return img_suma_norm, (
-        suma_same_skin.astype(np.uint8) if suma_same_skin is not None else None
-    )
+    return boceto_final, boceto_recortes
 
 
 def colocar_parte_en_plantilla(
@@ -565,88 +549,66 @@ def skin_mask(img):
 
 
 def reinhard_color_transfer(src, target, mask_src, mask_tgt):
-    # # Convertir a LAB
-    # src_lab = cv.cvtColor(src, cv.COLOR_BGR2LAB).astype(np.float32)
-    # tgt_lab = cv.cvtColor(target, cv.COLOR_BGR2LAB).astype(np.float32)
-
-    # # Extraer píxeles de piel en ambas imágenes
-    # src_pixels = src_lab[mask_src > 0]
-    # tgt_pixels = tgt_lab[mask_tgt > 0]
-
-    # # Si alguna máscara está vacía, regresar la imagen original
-    # if len(src_pixels) == 0 or len(tgt_pixels) == 0:
-    #     return src
-
-    # # Estadísticas
-    # src_mean, src_std = src_pixels.mean(axis=0), src_pixels.std(axis=0)
-    # tgt_mean, tgt_std = tgt_pixels.mean(axis=0), tgt_pixels.std(axis=0)
-
-    # src_std[src_std == 0] = 1
-
-    # # Aplicar a todos los píxeles de piel del src
-    # result = src_lab.copy()
-    # result[mask_src > 0] = ((src_pixels - src_mean) * (tgt_std / src_std)) + tgt_mean
-
-    # result = np.clip(result, 0, 255)
-    # result_bgr = cv.cvtColor(result.astype(np.uint8), cv.COLOR_LAB2BGR)
-    # return result_bgr
+    """
+    Transfers color characteristics from target to source using Reinhard method.
+        
+    Matches mean and standard deviation of color channels in LAB color space
+    to harmonize skin tones between different facial parts.
+    
+    Args:
+        src: Source image to adjust
+        target: Target image to match
+        mask_src: Mask defining regions to adjust in source
+        mask_tgt: Mask defining reference regions in target
+        
+    Returns:
+        Source image with adjusted colors
+    """
     src_lab = cv.cvtColor(src, cv.COLOR_BGR2LAB).astype(np.float32)
     tgt_lab = cv.cvtColor(target, cv.COLOR_BGR2LAB).astype(np.float32)
-
-    # canales
     Ls, As, Bs = cv.split(src_lab)
     Lt, At, Bt = cv.split(tgt_lab)
-
-    # Extraer pixels de piel
     As_pix = As[mask_src > 0]
     Bs_pix = Bs[mask_src > 0]
-
     At_pix = At[mask_tgt > 0]
     Bt_pix = Bt[mask_tgt > 0]
-
     if len(As_pix) == 0 or len(At_pix) == 0:
         return src
-
-    # medias y std
-    mean_As, std_As = As_pix.mean(), As_pix.std()
-    mean_Bs, std_Bs = Bs_pix.mean(), Bs_pix.std()
-
+    mean_As, std_As = As_pix.mean(), max(As_pix.std(), 1)
+    mean_Bs, std_Bs = Bs_pix.mean(), max(Bs_pix.std(), 1)
     mean_At, std_At = At_pix.mean(), At_pix.std()
     mean_Bt, std_Bt = Bt_pix.mean(), Bt_pix.std()
-
-    std_As = max(std_As, 1)
-    std_Bs = max(std_Bs, 1)
-
-    # NUEVOS valores para A y B solo en zonas de piel
     A_new = As.copy()
     B_new = Bs.copy()
-
     A_new[mask_src > 0] = ((As_pix - mean_As) * (std_At / std_As)) + mean_At
     B_new[mask_src > 0] = ((Bs_pix - mean_Bs) * (std_Bt / std_Bs)) + mean_Bt
-
-    # Ensamblar imagen
     result_lab = cv.merge([Ls, A_new, B_new])
-    result = cv.cvtColor(result_lab.astype(np.uint8), cv.COLOR_LAB2BGR)
-
-    return result
+    return cv.cvtColor(result_lab.astype(np.uint8), cv.COLOR_LAB2BGR)
 
 
 def match_skin_tone(images, ref_index=0):
+    """
+    Adjusts skin tone across a list of images to match a reference.
+    
+    All images will have their skin tones adjusted to match the reference
+    image specified by ref_index, creating visual harmony across facial parts.
+    
+    Args:
+        images: List of BGR images to process
+        ref_index: Index of the reference image (default: 0)
+        
+    Returns:
+        List of images with adjusted skin tones
+    """
     reference = images[ref_index]
     mask_ref = skin_mask(reference)
-
-    adjusted_images = []
-
+    adjusted = []
     for i, img in enumerate(images):
         if i == ref_index:
-            adjusted_images.append(img)
+            adjusted.append(img)
             continue
-
         mask_src = skin_mask(img)
-
         result = reinhard_color_transfer(img, reference, mask_src, mask_ref)
         result = cv.bilateralFilter(result, 7, 50, 50)
-
-        adjusted_images.append(result)
-
-    return adjusted_images
+        adjusted.append(result)
+    return adjusted
