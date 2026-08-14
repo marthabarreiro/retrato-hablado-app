@@ -5,6 +5,8 @@ from kivy.graphics.texture import Texture
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.uix.boxlayout import BoxLayout
 import cv2
+import zipfile
+import os
 
 import tools
 from custom_widgets import ImageTextButton
@@ -179,16 +181,15 @@ class MainApp(App):
 
         # Generar nombre sugerido con timestamp
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        default_filename = f"retrato_hablado_{timestamp}.png"
+        default_filename = f"retrato_hablado_{timestamp}.zip"
 
         # Abrir diálogo para guardar archivo
         filepath = filedialog.asksaveasfilename(
             title="Guardar retrato hablado",
-            defaultextension=".png",
+            defaultextension=".zip",
             initialfile=default_filename,
             filetypes=[
-                ("PNG files", "*.png"),
-                ("JPEG files", "*.jpg"),
+                ("ZIP files", "*.zip"),
                 ("All files", "*.*"),
             ],
         )
@@ -200,14 +201,33 @@ class MainApp(App):
             self.root.ids.messages.text = "Guardado cancelado."
             return
 
-        # Generar boceto y guardar
+        # Generar boceto y recortes
         face_parts_data = self.get_parts_data()
         boceto, recortes = tools.suma_imagenes_dominio_frecuencial(face_parts_data)
 
-        cv2.imwrite(filepath, boceto)
-        # cv2.imwrite(filepath, real)
-
-        self.root.ids.messages.text = f"Imagen guardada en: {filepath}"
+        # Crear archivo zip con boceto, recortes y texto de messages
+        
+        try:
+            with zipfile.ZipFile(filepath, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                # Guardar el boceto
+                boceto_temp = f"boceto_{timestamp}.png"
+                cv2.imwrite(boceto_temp, boceto)
+                zipf.write(boceto_temp, "boceto.png")
+                os.remove(boceto_temp)
+                
+                # Guardar la imagen de recortes con piel homologada
+                recorte_temp = f"recorte_{timestamp}.png"
+                cv2.imwrite(recorte_temp, recortes)
+                zipf.write(recorte_temp, f"recortes.png")
+                os.remove(recorte_temp)
+                
+                # Guardar el texto de messages
+                messages_text = self.root.ids.messages.text
+                zipf.writestr("descripcion.txt", messages_text)
+            
+            self.root.ids.messages.text = f"Archivo ZIP guardado en: {filepath}"
+        except Exception as e:
+            self.root.ids.messages.text = f"Error al guardar: {str(e)}"
 
     def quit(self):
         self.stop()
